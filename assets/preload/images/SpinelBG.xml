@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="SpinelBG.png">
+	<!-- Created with Adobe Animate version 21.0.0.35450 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="TitleBG0000" x="0" y="0" width="1695" height="1145" frameX="-91" frameY="-63" frameWidth="1828" frameHeight="1272"/>
+	<SubTexture name="TitleBG0001" x="1695" y="0" width="1828" height="1272"/>
+	<SubTexture name="TitleBG0002" x="1695" y="0" width="1828" height="1272"/>
+	<SubTexture name="TitleBG0003" x="0" y="1272" width="1717" height="1176" frameX="-69" frameY="-48" frameWidth="1828" frameHeight="1272"/>
+	<SubTexture name="TitleBG0004" x="0" y="1272" width="1717" height="1176" frameX="-69" frameY="-48" frameWidth="1828" frameHeight="1272"/>
+	<SubTexture name="TitleBG0005" x="1717" y="1272" width="1700" height="1152" frameX="-86" frameY="-60" frameWidth="1828" frameHeight="1272"/>
+	<SubTexture name="TitleBG0006" x="1717" y="1272" width="1700" height="1152" frameX="-86" frameY="-60" frameWidth="1828" frameHeight="1272"/>
+	<SubTexture name="TitleBG0007" x="1717" y="1272" width="1700" height="1152" frameX="-86" frameY="-60" frameWidth="1828" frameHeight="1272"/>
+	<SubTexture name="TitleBG0008" x="1717" y="1272" width="1700" height="1152" frameX="-86" frameY="-60" frameWidth="1828" frameHeight="1272"/>
+	<SubTexture name="TitleBG0009" x="1717" y="1272" width="1700" height="1152" frameX="-86" frameY="-60" frameWidth="1828" frameHeight="1272"/>
+	<SubTexture name="TitleBG0010" x="1717" y="1272" width="1700" height="1152" frameX="-86" frameY="-60" frameWidth="1828" frameHeight="1272"/>
+	<SubTexture name="TitleBG0011" x="1717" y="1272" width="1700" height="1152" frameX="-86" frameY="-60" frameWidth="1828" frameHeight="1272"/>
+	<SubTexture name="TitleBG0012" x="1717" y="1272" width="1700" height="1152" frameX="-86" frameY="-60" frameWidth="1828" frameHeight="1272"/>
+	<SubTexture name="TitleBG0013" x="1717" y="1272" width="1700" height="1152" frameX="-86" frameY="-60" frameWidth="1828" frameHeight="1272"/>
+	<SubTexture name="TitleBG0014" x="1717" y="1272" width="1700" height="1152" frameX="-86" frameY="-60" frameWidth="1828" frameHeight="1272"/>
+</TextureAtlas>

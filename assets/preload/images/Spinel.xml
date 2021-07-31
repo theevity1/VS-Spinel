@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Spinel.png">
+	<!-- Created with Adobe Animate version 21.0.0.35450 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="spinelvibe0000" x="0" y="0" width="906" height="1068" frameX="-1" frameY="-47" frameWidth="1037" frameHeight="1117"/>
+	<SubTexture name="spinelvibe0001" x="0" y="0" width="906" height="1068" frameX="-1" frameY="-47" frameWidth="1037" frameHeight="1117"/>
+	<SubTexture name="spinelvibe0002" x="906" y="0" width="906" height="1115" frameX="0" frameY="0" frameWidth="1037" frameHeight="1117"/>
+	<SubTexture name="spinelvibe0003" x="906" y="0" width="906" height="1115" frameX="0" frameY="0" frameWidth="1037" frameHeight="1117"/>
+	<SubTexture name="spinelvibe0004" x="1812" y="0" width="906" height="1087" frameX="-1" frameY="-28" frameWidth="1037" frameHeight="1117"/>
+	<SubTexture name="spinelvibe0005" x="1812" y="0" width="906" height="1087" frameX="-1" frameY="-28" frameWidth="1037" frameHeight="1117"/>
+	<SubTexture name="spinelvibe0006" x="2718" y="0" width="904" height="1064" frameX="-8" frameY="-52" frameWidth="1037" frameHeight="1117"/>
+	<SubTexture name="spinelvibe0007" x="2718" y="0" width="904" height="1064" frameX="-8" frameY="-52" frameWidth="1037" frameHeight="1117"/>
+	<SubTexture name="spinelvibe0008" x="3622" y="0" width="885" height="1065" frameX="-29" frameY="-51" frameWidth="1037" frameHeight="1117"/>
+	<SubTexture name="spinelvibe0009" x="3622" y="0" width="885" height="1065" frameX="-29" frameY="-51" frameWidth="1037" frameHeight="1117"/>
+	<SubTexture name="spinelvibe0010" x="3622" y="0" width="885" height="1065" frameX="-29" frameY="-51" frameWidth="1037" frameHeight="1117"/>
+	<SubTexture name="spinelvibe0011" x="4507" y="0" width="885" height="1064" frameX="-32" frameY="-52" frameWidth="1037" frameHeight="1117"/>
+	<SubTexture name="spinelvibe0012" x="4507" y="0" width="885" height="1064" frameX="-32" frameY="-52" frameWidth="1037" frameHeight="1117"/>
+	<SubTexture name="spinelvibe0013" x="4507" y="0" width="885" height="1064" frameX="-32" frameY="-52" frameWidth="1037" frameHeight="1117"/>
+	<SubTexture name="spinelvibe0014" x="5392" y="0" width="885" height="1062" frameX="-33" frameY="-54" frameWidth="1037" frameHeight="1117"/>
+	<SubTexture name="spinelvibe0015" x="5392" y="0" width="885" height="1062" frameX="-33" frameY="-54" frameWidth="1037" frameHeight="1117"/>
+	<SubTexture name="spinelvibe0016" x="6277" y="0" width="867" height="1080" frameX="-77" frameY="-27" frameWidth="1037" frameHeight="1117"/>
+	<SubTexture name="spinelvibe0017" x="6277" y="0" width="867" height="1080" frameX="-77" frameY="-27" frameWidth="1037" frameHeight="1117"/>
+	<SubTexture name="spinelvibe0018" x="7144" y="0" width="936" height="1023" frameX="-79" frameY="-84" frameWidth="1037" frameHeight="1117"/>
+	<SubTexture name="spinelvibe0019" x="7144" y="0" width="936" height="1023" frameX="-79" frameY="-84" frameWidth="1037" frameHeight="1117"/>
+	<SubTexture name="spinelvibe0020" x="0" y="1115" width="959" height="1020" frameX="-78" frameY="-87" frameWidth="1037" frameHeight="1117"/>
+	<SubTexture name="spinelvibe0021" x="0" y="1115" width="959" height="1020" frameX="-78" frameY="-87" frameWidth="1037" frameHeight="1117"/>
+	<SubTexture name="spinelvibe0022" x="959" y="1115" width="912" height="1042" frameX="-72" frameY="-67" frameWidth="1037" frameHeight="1117"/>
+	<SubTexture name="spinelvibe0023" x="1871" y="1115" width="868" height="1071" frameX="-47" frameY="-46" frameWidth="1037" frameHeight="1117"/>
+	<SubTexture name="spinelvibe0024" x="1871" y="1115" width="868" height="1071" frameX="-47" frameY="-46" frameWidth="1037" frameHeight="1117"/>
+	<SubTexture name="spinelvibe0025" x="1871" y="1115" width="868" height="1071" frameX="-47" frameY="-46" frameWidth="1037" frameHeight="1117"/>
+	<SubTexture name="spinelvibe0026" x="2739" y="1115" width="867" height="1084" frameX="-44" frameY="-32" frameWidth="1037" frameHeight="1117"/>
+</TextureAtlas>
