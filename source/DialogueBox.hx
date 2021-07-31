@@ -31,6 +31,7 @@ class DialogueBox extends FlxSpriteGroup
 
 	var portraitLeft:FlxSprite;
 	var portraitRight:FlxSprite;
+	var spinelPortrait:FlxSprite;
 
 	var handSelect:FlxSprite;
 	var bgFade:FlxSprite;
@@ -64,13 +65,17 @@ class DialogueBox extends FlxSpriteGroup
 				bgFade.alpha = 0.7;
 		}, 5);
 
-		box = new FlxSprite(-20, 45);
+		box = new FlxSprite(50, 350);
 		
 		var hasDialog = false;
 		switch (PlayState.SONG.song.toLowerCase())
 		{
 			case 'other-friends':
 				dialogueSoundPaths = CoolUtil.coolTextFile(Paths.txt('other-friends/lines'));
+				hasDialog = true;
+				box.frames = Paths.getSparrowAtlas('spinel/box');
+				box.animation.addByPrefix('normalOpen', 'Speech Bubble Normal Open', 24, false);
+				box.animation.addByIndices('normal', 'speech bubble normal', [4], "", 24, true);
 			case 'senpai':
 				hasDialog = true;
 				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-pixel');
@@ -94,12 +99,6 @@ class DialogueBox extends FlxSpriteGroup
 				var face:FlxSprite = new FlxSprite(320, 170).loadGraphic(Paths.image('weeb/spiritFaceForward'));
 				face.setGraphicSize(Std.int(face.width * 6));
 				add(face);
-
-			case 'other-friends':
-				hasDialog = true;
-				box.frames = Paths.getSparrowAtlas('spinel/garBox');
-				box.animation.addByPrefix('normalOpen', 'Spirit Textbox spawn instance ', 24, false);
-				box.animation.addByIndices('normal', 'Spirit Textbox spawn instance ', [4], "", 24);
 		}
 
 		this.dialogueList = dialogueList;
@@ -141,13 +140,22 @@ class DialogueBox extends FlxSpriteGroup
 		portraitRight.scrollFactor.set();
 		add(portraitRight);
 		portraitRight.visible = false;
+
+		spinelPortrait = new FlxSprite(130, 100);
+		spinelPortrait.frames = Paths.getSparrowAtlas('spinel/portraits/gardialogue');
+		spinelPortrait.animation.addByPrefix('enter', 'gar Default instance ', 24, false);
+		spinelPortrait.updateHitbox();
+		spinelPortrait.setGraphicSize(Std.int(spinelPortrait.width * PlayState.daPixelZoom * 0.2));
+		spinelPortrait.antialiasing = true;
+		spinelPortrait.scrollFactor.set();
+		add(spinelPortrait);
+		spinelPortrait.visible = false;
 		
 		box.animation.play('normalOpen');
-		box.setGraphicSize(Std.int(box.width * PlayState.daPixelZoom * 0.9));
+		if(PlayState.dad.curCharacter != 'Spinel')box.setGraphicSize(Std.int(box.width * PlayState.daPixelZoom * 0.9));
 		box.updateHitbox();
 		add(box);
 
-		box.screenCenter(X);
 		portraitLeft.screenCenter(X);
 
 		if (hasDialog)
@@ -163,12 +171,12 @@ class DialogueBox extends FlxSpriteGroup
 		}
 
 		dropText = new FlxText(242, 502, Std.int(FlxG.width * 0.6), "", 32);
-		dropText.font = 'Pixel Arial 11 Bold';
+		dropText.font = 'DejaVu Sans Bold';
 		dropText.color = 0xFFD89494;
 		add(dropText);
 
 		swagDialogue = new FlxTypeText(240, 500, Std.int(FlxG.width * 0.6), "", 32);
-		swagDialogue.font = 'Pixel Arial 11 Bold';
+		swagDialogue.font = 'DejaVu Sans Bold';
 		swagDialogue.color = 0xFF3F2021;
 		swagDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 0.6)];
 		add(swagDialogue);
@@ -227,6 +235,7 @@ class DialogueBox extends FlxSpriteGroup
 						bgFade.alpha -= 1 / 5 * 0.7;
 						portraitLeft.visible = false;
 						portraitRight.visible = false;
+						spinelPortrait.visible = false;
 						swagDialogue.alpha -= 1 / 5;
 						dropText.alpha = swagDialogue.alpha;
 					}, 5);
@@ -265,6 +274,7 @@ class DialogueBox extends FlxSpriteGroup
 							bgFade.alpha -= 1 / 5 * 0.7;
 							portraitLeft.visible = false;
 							portraitRight.visible = false;
+							spinelPortrait.visible = false;
 							swagDialogue.alpha -= 1 / 5;
 							dropText.alpha = swagDialogue.alpha;
 						}, 5);
@@ -310,14 +320,24 @@ class DialogueBox extends FlxSpriteGroup
 		dialogueSound.play();
 		switch (curCharacter)
 		{
-			case 'dad':
+			case 'spineldif':
 				portraitRight.visible = false;
+				portraitLeft.visible = false;
+				if (!portraitLeft.visible)
+					{
+						spinelPortrait.visible = true;
+						spinelPortrait.animation.play('enter');
+					}
+			case 'spinel':
+				portraitRight.visible = false;
+				spinelPortrait.visible = false;
 				if (!portraitLeft.visible)
 				{
 					portraitLeft.visible = true;
 					portraitLeft.animation.play('enter');
 				}
 			case 'bf':
+				spinelPortrait.visible = false;
 				portraitLeft.visible = false;
 				if (!portraitRight.visible)
 				{

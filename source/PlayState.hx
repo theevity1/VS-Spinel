@@ -695,7 +695,7 @@ class PlayState extends MusicBeatState
 						add(bg2);
 	
 						var bg3:FlxSprite = new FlxSprite(-1300, -1100).loadGraphic(Paths.image('spinel/BG/first/floor'));
-						bg3.setGraphicSize(Std.int(bg3.width * 0.71));
+						bg3.setGraphicSize(Std.int(bg3.width * 0.72));
 						bg3.updateHitbox();
 						bg3.antialiasing = true;
 						bg3.scrollFactor.set(0.9, 0.9);
@@ -740,13 +740,14 @@ class PlayState extends MusicBeatState
 
 						if (SONG.song.toLowerCase() == "other-friends")
 							{
-								bg6 = new FlxSprite(750, 295);
+								bg6 = new FlxSprite(750, 284);
 								bg6.frames = Paths.getSparrowAtlas("spinel/BG/second/particles");
 								bg6.animation.addByPrefix("vibe", "Particles", 24, false); 
+								bg6.scrollFactor.set(0.2, 0.2);
 								add(bg6);
 							}
 
-						var bg4:FlxSprite = new FlxSprite(-1350, -970).loadGraphic(Paths.image('spinel/BG/second/injector'));
+						var bg4:FlxSprite = new FlxSprite(-1350, -920).loadGraphic(Paths.image('spinel/BG/second/injector'));
 						bg4.updateHitbox();
 						bg4.antialiasing = true;
 						bg4.scrollFactor.set(0.9, 0.9);
@@ -895,9 +896,14 @@ class PlayState extends MusicBeatState
 				boyfriend.y += 220;
 				gf.x += 180;
 				gf.y += 300;
+			case 'field':
+				dad.x -= 150;
+				dad.y += 100;
 			case 'injector':
 				boyfriend.x += 270;
+				boyfriend.y += 100;
 				dad.x -= 200;
+				dad.y += 100;
 			case 'schoolEvil':
 				if(FlxG.save.data.distractions){
 				// trailArea.scrollFactor.set();
@@ -3513,7 +3519,7 @@ class PlayState extends MusicBeatState
 		}
 		#end
 
-		if (SONG.song.toLowerCase() == 'other-friends')
+		if (curStage == 'injector')
 			{
 			  switch(curStep)
 			  {		  
@@ -3582,8 +3588,9 @@ class PlayState extends MusicBeatState
 			// Conductor.changeBPM(SONG.bpm);
 
 			// Dad doesnt interupt his own notes
-			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection && dad.curCharacter != 'gf')
-				dad.dance();
+			if (!dad.animation.curAnim.name.startsWith('sing') && dad.curCharacter != 'gf') {
+                dad.dance();
+            }
 		}
 		// FlxG.log.add('change bpm' + SONG.notes[Std.int(curStep / 16)].changeBPM);
 		wiggleShit.update(Conductor.crochet);
