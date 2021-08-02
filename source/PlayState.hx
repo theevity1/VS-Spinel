@@ -732,7 +732,7 @@ class PlayState extends MusicBeatState
 						bg3.active = false;
 						add(bg3);
 
-						var bg7:FlxSprite = new FlxSprite(-3500, -110);
+						var bg7:FlxSprite = new FlxSprite(-4000, -110);
 						bg7.frames = Paths.getSparrowAtlas("spinel/BG/second/clouds2");
 						bg7.animation.addByPrefix("woo", "Clouds", 24, true); 
 						bg7.animation.play("woo");
@@ -743,7 +743,7 @@ class PlayState extends MusicBeatState
 								bg6 = new FlxSprite(750, 284);
 								bg6.frames = Paths.getSparrowAtlas("spinel/BG/second/particles");
 								bg6.animation.addByPrefix("vibe", "Particles", 24, false); 
-								bg6.scrollFactor.set(0.2, 0.2);
+								bg6.scrollFactor.set(0.9, 0.9);
 								add(bg6);
 							}
 
@@ -2231,6 +2231,8 @@ class PlayState extends MusicBeatState
 					case 'schoolEvil':
 						camFollow.x = boyfriend.getMidpoint().x - 200;
 						camFollow.y = boyfriend.getMidpoint().y - 200;
+					case 'injector':
+						camFollow.y = boyfriend.getMidpoint().y - 150;
 				}
 			}
 		}
@@ -2677,8 +2679,25 @@ class PlayState extends MusicBeatState
 
 					PlayState.SONG = Song.loadFromJson(nextSongLowercase + difficulty, PlayState.storyPlaylist[0]);
 					FlxG.sound.music.stop();
-
-					LoadingState.loadAndSwitchState(new PlayState());
+					
+					if (songLowercase == "other-friends")
+					{
+						inCutscene = true;
+						camZooming = false;
+						
+						dialogue = CoolUtil.coolTextFile(Paths.txt(songLowercase + "/endDialogue"));
+						var doof:DialogueBox = new DialogueBox(false, dialogue);
+						doof.scrollFactor.set();
+						doof.cameras = [camHUD];
+						doof.finishThing = function()
+						{
+							LoadingState.loadAndSwitchState(new PlayState());
+						};
+					}
+					else
+					{
+						LoadingState.loadAndSwitchState(new PlayState());
+					}
 				}
 			}
 			else

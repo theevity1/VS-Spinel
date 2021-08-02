@@ -31,7 +31,8 @@ class DialogueBox extends FlxSpriteGroup
 
 	var portraitLeft:FlxSprite;
 	var portraitRight:FlxSprite;
-	var spinelPortrait:FlxSprite;
+	var gfPortrait:FlxSprite;
+	var bfPortrait:FlxSprite;
 
 	var handSelect:FlxSprite;
 	var bgFade:FlxSprite;
@@ -122,41 +123,54 @@ class DialogueBox extends FlxSpriteGroup
 
 		else if (PlayState.SONG.song.toLowerCase() == 'other-friends')
 		{
-			portraitLeft = new FlxSprite(-20, 40);
-			portraitLeft.frames = Paths.getSparrowAtlas('spinel/portraits/senpaiPortrait');
-			portraitLeft.animation.addByPrefix('enter', 'Senpai Portrait Enter', 24, false);
-			portraitLeft.setGraphicSize(Std.int(portraitLeft.width * PlayState.daPixelZoom * 0.9));
-			portraitLeft.updateHitbox();
+			portraitLeft = new FlxSprite(-20, -40);
+			portraitLeft.frames = Paths.getSparrowAtlas('spinel/portraits/spinelspritedialogue');
+			portraitLeft.animation.addByPrefix('smug', 'smug', 24, false);
+			portraitLeft.animation.addByPrefix('meh', 'meh', 24, false);
+			portraitLeft.setGraphicSize(Std.int(portraitLeft.width * 0.9));
 			portraitLeft.scrollFactor.set();
+			portraitLeft.antialiasing = true;
 			add(portraitLeft);
 			portraitLeft.visible = false;
 		}
 
-		portraitRight = new FlxSprite(0, 40);
-		portraitRight.frames = Paths.getSparrowAtlas('weeb/bfPortrait');
-		portraitRight.animation.addByPrefix('enter', 'Boyfriend portrait enter', 24, false);
-		portraitRight.setGraphicSize(Std.int(portraitRight.width * PlayState.daPixelZoom * 0.9));
+		portraitRight = new FlxSprite(800, 170);
+		portraitRight.frames = Paths.getSparrowAtlas('spinel/portraits/bf_sprite_dialogue');
+		portraitRight.animation.addByPrefix('yes', 'yes', 24, false);
+		portraitRight.animation.addByPrefix('excited', 'excited', 24, false);
+		portraitRight.setGraphicSize(Std.int(portraitRight.width * 0.9));
 		portraitRight.updateHitbox();
 		portraitRight.scrollFactor.set();
+		portraitRight.antialiasing = true;
 		add(portraitRight);
 		portraitRight.visible = false;
 
-		spinelPortrait = new FlxSprite(130, 100);
-		spinelPortrait.frames = Paths.getSparrowAtlas('spinel/portraits/gardialogue');
-		spinelPortrait.animation.addByPrefix('enter', 'gar Default instance ', 24, false);
-		spinelPortrait.updateHitbox();
-		spinelPortrait.setGraphicSize(Std.int(spinelPortrait.width * PlayState.daPixelZoom * 0.2));
-		spinelPortrait.antialiasing = true;
-		spinelPortrait.scrollFactor.set();
-		add(spinelPortrait);
-		spinelPortrait.visible = false;
+		gfPortrait = new FlxSprite(500, 30);
+		gfPortrait.frames = Paths.getSparrowAtlas('spinel/portraits/gf_sprite_dialogue');
+		gfPortrait.animation.addByPrefix('normal', 'face1', 24, false);
+		gfPortrait.animation.addByPrefix('upset', 'face2', 24, false);
+		gfPortrait.updateHitbox();
+		gfPortrait.setGraphicSize(Std.int(gfPortrait.width * 0.9));
+		gfPortrait.antialiasing = true;
+		gfPortrait.scrollFactor.set();
+		add(gfPortrait);
+		gfPortrait.visible = false;
+
+		bfPortrait = new FlxSprite(800, 170);
+		bfPortrait.frames = Paths.getSparrowAtlas('spinel/portraits/bf_sprite_dialogue');
+		bfPortrait.animation.addByPrefix('shocked', 'shocked', 24, false);
+		bfPortrait.animation.addByPrefix('worried', 'worried', 24, false);
+		bfPortrait.updateHitbox();
+		bfPortrait.setGraphicSize(Std.int(bfPortrait.width * 0.9));
+		bfPortrait.antialiasing = true;
+		bfPortrait.scrollFactor.set();
+		add(bfPortrait);
+		bfPortrait.visible = false;
 		
 		box.animation.play('normalOpen');
-		if(PlayState.dad.curCharacter != 'Spinel')box.setGraphicSize(Std.int(box.width * PlayState.daPixelZoom * 0.9));
+		if(PlayState.curStage != 'injector')box.setGraphicSize(Std.int(box.width * PlayState.daPixelZoom * 0.9));
 		box.updateHitbox();
 		add(box);
-
-		portraitLeft.screenCenter(X);
 
 		if (hasDialog)
 			{
@@ -178,7 +192,6 @@ class DialogueBox extends FlxSpriteGroup
 		swagDialogue = new FlxTypeText(240, 500, Std.int(FlxG.width * 0.6), "", 32);
 		swagDialogue.font = 'DejaVu Sans Bold';
 		swagDialogue.color = 0xFF3F2021;
-		swagDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 0.6)];
 		add(swagDialogue);
 
 		dialogue = new Alphabet(0, 80, "", false, true);
@@ -224,7 +237,6 @@ class DialogueBox extends FlxSpriteGroup
 			{
 				if (!isEnding)
 				{
-					FlxG.sound.play(Paths.sound('clickText'), 0.8);
 					remove(dialogue);
 					remove(SkipThisShit);
 					isEnding = true;
@@ -235,7 +247,8 @@ class DialogueBox extends FlxSpriteGroup
 						bgFade.alpha -= 1 / 5 * 0.7;
 						portraitLeft.visible = false;
 						portraitRight.visible = false;
-						spinelPortrait.visible = false;
+						gfPortrait.visible = false;
+						bfPortrait.visible = false;
 						swagDialogue.alpha -= 1 / 5;
 						dropText.alpha = swagDialogue.alpha;
 					}, 5);
@@ -255,7 +268,6 @@ class DialogueBox extends FlxSpriteGroup
 				if (!isEnding)
 				{
 					remove(dialogue);		
-					FlxG.sound.play(Paths.sound('clickText'), 0.8);
 				}
 	
 				if (dialogueList[1] == null && dialogueList[0] != null)
@@ -274,7 +286,8 @@ class DialogueBox extends FlxSpriteGroup
 							bgFade.alpha -= 1 / 5 * 0.7;
 							portraitLeft.visible = false;
 							portraitRight.visible = false;
-							spinelPortrait.visible = false;
+							gfPortrait.visible = false;
+							bfPortrait.visible = false;
 							swagDialogue.alpha -= 1 / 5;
 							dropText.alpha = swagDialogue.alpha;
 						}, 5);
@@ -320,29 +333,75 @@ class DialogueBox extends FlxSpriteGroup
 		dialogueSound.play();
 		switch (curCharacter)
 		{
-			case 'spineldif':
+			case 'gf':
 				portraitRight.visible = false;
 				portraitLeft.visible = false;
+				bfPortrait.visible = false;
 				if (!portraitLeft.visible)
 					{
-						spinelPortrait.visible = true;
-						spinelPortrait.animation.play('enter');
+						gfPortrait.visible = true;
+						gfPortrait.animation.play('normal');
+					}
+			case 'gfdif':
+				portraitRight.visible = false;
+				portraitLeft.visible = false;
+				bfPortrait.visible = false;
+				if (!portraitLeft.visible)
+					{
+						gfPortrait.visible = true;
+						gfPortrait.animation.play('upset');
 					}
 			case 'spinel':
 				portraitRight.visible = false;
-				spinelPortrait.visible = false;
+				gfPortrait.visible = false;
+				bfPortrait.visible = false;
 				if (!portraitLeft.visible)
 				{
 					portraitLeft.visible = true;
-					portraitLeft.animation.play('enter');
+					portraitLeft.animation.play('smug');
+				}
+			case 'spinellol':
+				portraitRight.visible = false;
+				gfPortrait.visible = false;
+				bfPortrait.visible = false;
+				if (!portraitLeft.visible)
+				{
+					portraitLeft.visible = true;
+					portraitLeft.animation.play('meh');
 				}
 			case 'bf':
-				spinelPortrait.visible = false;
+				gfPortrait.visible = false;
 				portraitLeft.visible = false;
 				if (!portraitRight.visible)
 				{
+					bfPortrait.visible = true;
+					bfPortrait.animation.play('shocked');
+				}
+			case 'bfwor':
+				gfPortrait.visible = false;
+				portraitLeft.visible = false;
+				if (!portraitRight.visible)
+				{
+					bfPortrait.visible = true;
+					bfPortrait.animation.play('worried');
+				}
+			case 'bfexc':
+				gfPortrait.visible = false;
+				portraitLeft.visible = false;
+				bfPortrait.visible = false;
+				if (!portraitRight.visible)
+				{
 					portraitRight.visible = true;
-					portraitRight.animation.play('enter');
+					portraitRight.animation.play('excited');
+				}
+			case 'bfyes':
+				gfPortrait.visible = false;
+				portraitLeft.visible = false;
+				bfPortrait.visible = false;
+				if (!portraitRight.visible)
+				{
+					portraitRight.visible = true;
+					portraitRight.animation.play('yes');
 				}
 		}
 	}

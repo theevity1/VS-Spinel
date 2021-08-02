@@ -156,19 +156,37 @@ class Character extends FlxSprite
 			case 'Spinel':
 			tex = Paths.getSparrowAtlas('spinel/assets/Spinel', 'shared');
 			frames = tex;
-			animation.addByPrefix('idle', 'Dad idle dance', 24);
-			animation.addByPrefix('singUP', 'Dad Sing Note UP', 24, false);
-			animation.addByPrefix('singRIGHT', 'Dad Sing Note RIGHT', 24, false);
-			animation.addByPrefix('singDOWN', 'Dad Sing Note DOWN', 24, false);
-			animation.addByPrefix('singLEFT', 'Dad Sing Note LEFT', 24, false);
+			animation.addByPrefix('idle', 'SPINELIDLE', 24);
+			animation.addByPrefix('singUP', 'SPINELUP', 24, false);
+			animation.addByPrefix('singRIGHT', 'SPINELRIGHT', 24, false);
+			animation.addByPrefix('singDOWN', 'SPINELDOWN', 24, false);
+			animation.addByPrefix('singLEFT', 'SPINELEFT', 24, false);
 
-			addOffset('idle');
-			addOffset("singUP", -6, 50);
-			addOffset("singRIGHT", 0, 27);
-			addOffset("singLEFT", -10, 10);
-			addOffset("singDOWN", 0, -30);
+			addOffset('idle', 0, 190);
+			addOffset("singUP", -36, 372);
+			addOffset("singRIGHT", -100, 177);
+			addOffset("singLEFT", 75, 123);
+			addOffset("singDOWN", -89, -181);
 
 			playAnim('idle');
+
+			case 'Spinel-su':
+			tex = Paths.getSparrowAtlas('spinel/assets/Spinel2', 'shared');
+			frames = tex;
+			animation.addByPrefix('idle', 'SPINELIDLE', 24);
+			animation.addByPrefix('singUP', 'SPINELUP', 24, false);
+			animation.addByPrefix('singRIGHT', 'SPINELRIGHT', 24, false);
+			animation.addByPrefix('singDOWN', 'SPINELDOWN', 24, false);
+			animation.addByPrefix('singLEFT', 'SPINELEFT', 24, false);
+
+			addOffset('idle', 0, 190);
+			addOffset("singUP", -36, 372);
+			addOffset("singRIGHT", -130, 92);
+			addOffset("singLEFT", 69, 143);
+			addOffset("singDOWN", -119, -164);
+
+			playAnim('idle');
+
 			case 'dad':
 				// DAD ANIMATION LOADING CODE
 				tex = Paths.getSparrowAtlas('characters/DADDY_DEAREST', 'shared');
