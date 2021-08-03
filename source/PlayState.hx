@@ -1135,7 +1135,7 @@ class PlayState extends MusicBeatState
 					if (playCutscene) {
 						FlxTransitionableState.skipNextTransIn = false;
 						FlxTransitionableState.skipNextTransOut = false;
-						LoadingState.loadAndSwitchState(new VideoState("assets/videos/FINAL_CUTSCENE_ONE_NOMUSIC.webm", new PlayState()));
+						LoadingState.loadAndSwitchState(new VideoState("assets/videos/FINAL_CUTSCENE_ONE.webm", new PlayState()));
 						playCutscene = false;
 					} else {
 						camHUD.visible = true;
