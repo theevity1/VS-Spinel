@@ -1,0 +1,2 @@
+shared:assets/shared/sounds/dialogue1/BF_Line2.ogg
+shared:assets/shared/sounds/dialogue1/BF_Line2.2.ogg

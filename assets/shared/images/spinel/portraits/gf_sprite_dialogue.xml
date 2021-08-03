@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="gf_sprite_dialogue.png">
+	<!-- Created with Adobe Animate version 21.0.0.35450 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="face10000" x="0" y="0" width="699" height="635" frameX="0" frameY="-2" frameWidth="699" frameHeight="637"/>
+	<SubTexture name="face10001" x="0" y="0" width="699" height="635" frameX="0" frameY="-2" frameWidth="699" frameHeight="637"/>
+	<SubTexture name="face10002" x="704" y="0" width="699" height="637"/>
+	<SubTexture name="face10003" x="704" y="0" width="699" height="637"/>
+	<SubTexture name="face10004" x="704" y="0" width="699" height="637"/>
+	<SubTexture name="face10005" x="704" y="0" width="699" height="637"/>
+	<SubTexture name="face10006" x="704" y="0" width="699" height="637"/>
+	<SubTexture name="face10007" x="704" y="0" width="699" height="637"/>
+	<SubTexture name="face10008" x="704" y="0" width="699" height="637"/>
+	<SubTexture name="face10009" x="704" y="0" width="699" height="637"/>
+	<SubTexture name="face10010" x="704" y="0" width="699" height="637"/>
+	<SubTexture name="face10011" x="704" y="0" width="699" height="637"/>
+	<SubTexture name="face10012" x="704" y="0" width="699" height="637"/>
+	<SubTexture name="face10013" x="704" y="0" width="699" height="637"/>
+	<SubTexture name="face10014" x="704" y="0" width="699" height="637"/>
+	<SubTexture name="face10015" x="704" y="0" width="699" height="637"/>
+	<SubTexture name="face10016" x="704" y="0" width="699" height="637"/>
+	<SubTexture name="face10017" x="704" y="0" width="699" height="637"/>
+	<SubTexture name="face10018" x="704" y="0" width="699" height="637"/>
+	<SubTexture name="face10019" x="704" y="0" width="699" height="637"/>
+	<SubTexture name="face10020" x="704" y="0" width="699" height="637"/>
+	<SubTexture name="face10021" x="704" y="0" width="699" height="637"/>
+	<SubTexture name="face10022" x="704" y="0" width="699" height="637"/>
+	<SubTexture name="face10023" x="704" y="0" width="699" height="637"/>
+	<SubTexture name="face10024" x="704" y="0" width="699" height="637"/>
+	<SubTexture name="face10025" x="704" y="0" width="699" height="637"/>
+	<SubTexture name="face10026" x="704" y="0" width="699" height="637"/>
+	<SubTexture name="face10027" x="704" y="0" width="699" height="637"/>
+	<SubTexture name="face10028" x="704" y="0" width="699" height="637"/>
+	<SubTexture name="face10029" x="704" y="0" width="699" height="637"/>
+	<SubTexture name="face20000" x="0" y="642" width="699" height="635" frameX="0" frameY="-2" frameWidth="699" frameHeight="637"/>
+	<SubTexture name="face20001" x="0" y="642" width="699" height="635" frameX="0" frameY="-2" frameWidth="699" frameHeight="637"/>
+	<SubTexture name="face20002" x="704" y="642" width="699" height="637"/>
+	<SubTexture name="face20003" x="704" y="642" width="699" height="637"/>
+	<SubTexture name="face20004" x="704" y="642" width="699" height="637"/>
+	<SubTexture name="face20005" x="704" y="642" width="699" height="637"/>
+	<SubTexture name="face20006" x="704" y="642" width="699" height="637"/>
+	<SubTexture name="face20007" x="704" y="642" width="699" height="637"/>
+	<SubTexture name="face20008" x="704" y="642" width="699" height="637"/>
+	<SubTexture name="face20009" x="704" y="642" width="699" height="637"/>
+	<SubTexture name="face20010" x="704" y="642" width="699" height="637"/>
+	<SubTexture name="face20011" x="704" y="642" width="699" height="637"/>
+	<SubTexture name="face20012" x="704" y="642" width="699" height="637"/>
+	<SubTexture name="face20013" x="704" y="642" width="699" height="637"/>
+	<SubTexture name="face20014" x="704" y="642" width="699" height="637"/>
+	<SubTexture name="face20015" x="704" y="642" width="699" height="637"/>
+	<SubTexture name="face20016" x="704" y="642" width="699" height="637"/>
+	<SubTexture name="face20017" x="704" y="642" width="699" height="637"/>
+	<SubTexture name="face20018" x="704" y="642" width="699" height="637"/>
+	<SubTexture name="face20019" x="704" y="642" width="699" height="637"/>
+	<SubTexture name="face20020" x="704" y="642" width="699" height="637"/>
+	<SubTexture name="face20021" x="704" y="642" width="699" height="637"/>
+	<SubTexture name="face20022" x="704" y="642" width="699" height="637"/>
+	<SubTexture name="face20023" x="704" y="642" width="699" height="637"/>
+	<SubTexture name="face20024" x="704" y="642" width="699" height="637"/>
+	<SubTexture name="face20025" x="704" y="642" width="699" height="637"/>
+	<SubTexture name="face20026" x="704" y="642" width="699" height="637"/>
+	<SubTexture name="face20027" x="704" y="642" width="699" height="637"/>
+	<SubTexture name="face20028" x="704" y="642" width="699" height="637"/>
+	<SubTexture name="face20029" x="704" y="642" width="699" height="637"/>
+</TextureAtlas>

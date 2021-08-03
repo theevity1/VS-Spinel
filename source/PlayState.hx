@@ -1028,7 +1028,7 @@ class PlayState extends MusicBeatState
 		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8), this,
 			'health', 0, 2);
 		healthBar.scrollFactor.set();
-		healthBar.createFilledBar(0xFFFF0000, 0xFF66FF33);
+		healthBar.createFilledBar(0xFFFF0000, 0xFFCCFF66);
 		// healthBar
 		add(healthBar);
 
@@ -1135,7 +1135,7 @@ class PlayState extends MusicBeatState
 					if (playCutscene) {
 						FlxTransitionableState.skipNextTransIn = false;
 						FlxTransitionableState.skipNextTransOut = false;
-						LoadingState.loadAndSwitchState(new VideoState("assets/videos/Cutscene1Subtitles.webm", new PlayState()));
+						LoadingState.loadAndSwitchState(new VideoState("assets/videos/FINAL_CUTSCENE_ONE_NOMUSIC.webm", new PlayState()));
 						playCutscene = false;
 					} else {
 						camHUD.visible = true;
@@ -2662,23 +2662,18 @@ class PlayState extends MusicBeatState
 						case 'dad-battle': songLowercase = 'dadbattle';
 						case 'philly-nice': songLowercase = 'philly';
 					}
-					if (songLowercase == 'eggnog')
-					{
-						var blackShit:FlxSprite = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
-							-FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
-						blackShit.scrollFactor.set();
-						add(blackShit);
-						camHUD.visible = false;
-
-						FlxG.sound.play(Paths.sound('Lights_Shut_off'));
-					}
 
 					FlxTransitionableState.skipNextTransIn = true;
 					FlxTransitionableState.skipNextTransOut = true;
 					prevCamFollow = camFollow;
-
-					PlayState.SONG = Song.loadFromJson(nextSongLowercase + difficulty, PlayState.storyPlaylist[0]);
+					
 					FlxG.sound.music.stop();
+					
+					var poop:() -> Void = function()
+					{
+						PlayState.SONG = Song.loadFromJson(nextSongLowercase + difficulty, PlayState.storyPlaylist[0]);
+						LoadingState.loadAndSwitchState(new PlayState());
+					};
 					
 					if (songLowercase == "other-friends")
 					{
@@ -2691,12 +2686,14 @@ class PlayState extends MusicBeatState
 						doof.cameras = [camHUD];
 						doof.finishThing = function()
 						{
-							LoadingState.loadAndSwitchState(new PlayState());
+							poop();
 						};
+						
+						add(doof);
 					}
 					else
 					{
-						LoadingState.loadAndSwitchState(new PlayState());
+						poop();
 					}
 				}
 			}

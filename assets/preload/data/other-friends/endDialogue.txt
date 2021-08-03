@@ -1,0 +1,9 @@
+spinellol:null:AGGHH! NO NO NO NO!! I WAS SUPPOSED TO WIN!
+bfyes:BF_Line1_Dialogue_2:HA! I won, now pack up your bags slinky, it’s time to move on outta Earth.
+spinellol:null:Grrrr… 
+spinel:null:Actually, y’know what! I don’t have to stop just cause some under-sized blue haired shrimp told me to!
+bfwor:BF_Line2_Dialogue_2:First of all - ouch. Second of all --
+bf:BF_Line2.2_Dialogue_2:BU-- WHAT! But we had a deal!
+spinel:null:Well deal’s off bub! Your Earth is gettin’ DESTROYED.
+gfdif:girlfriendline_3:Oh no who could’ve seen this coming.
+bfwor:BF_Line3_Dialogue_2:I don’t need the sarcasm right now!

@@ -415,6 +415,46 @@ class Character extends FlxSprite
 
 			flipX = true;
 
+			case 'bf-fail':
+			var tex = Paths.getSparrowAtlas('spinel/assets/BF_Falling_sprite', 'shared');
+			frames = tex;
+
+			trace(tex.frames.length);
+
+			animation.addByPrefix('idle', 'IDLEFAIL', 24, true);
+			animation.addByPrefix('singUP', 'UPMOVE0', 24, false);
+			animation.addByPrefix('singLEFT', 'LEFTMOVE0', 24, false);
+			animation.addByPrefix('singRIGHT', 'RIGHTMOVE0', 24, false);
+			animation.addByPrefix('singDOWN', 'DOWNMOVE0', 24, false);
+			animation.addByPrefix('singUPmiss', 'UPM0', 24, false);
+			animation.addByPrefix('singLEFTmiss', 'LEFTM0', 24, false);
+			animation.addByPrefix('singRIGHTmiss', 'RIGHTM0', 24, false);
+			animation.addByPrefix('singDOWNmiss', 'DOWNM0', 24, false);
+
+			animation.addByPrefix('firstDeath', "BF dies", 24, false);
+			animation.addByPrefix('deathLoop', "BF Dead Loop", 24, true);
+			animation.addByPrefix('deathConfirm', "BF Dead confirm", 24, false);
+
+			animation.addByPrefix('scared', 'BF idle shaking', 24);
+
+			addOffset('idle', -5);
+			addOffset("singUP", -29, 27);
+			addOffset("singRIGHT", -38, -7);
+			addOffset("singLEFT", 12, -6);
+			addOffset("singDOWN", -10, -50);
+			addOffset("singUPmiss", -29, 27);
+			addOffset("singRIGHTmiss", -30, 21);
+			addOffset("singLEFTmiss", 12, 24);
+			addOffset("singDOWNmiss", -11, -19);
+			addOffset('firstDeath', 37, 11);
+			addOffset('deathLoop', 37, 5);
+			addOffset('deathConfirm', 37, 69);
+			addOffset('scared', -4);
+
+			playAnim('idle');
+
+			flipX = true;
+
 			case 'bf-christmas':
 				var tex = Paths.getSparrowAtlas('characters/bfChristmas');
 				frames = tex;

@@ -1,0 +1,10 @@
+shared:assets/shared/sounds/dialogue1/BF_Line1.ogg
+shared:assets/shared/sounds/dialogue1/Spinel_Line1.ogg
+shared:assets/shared/sounds/dialogue1/Spinel_Line1.1.ogg
+shared:assets/shared/sounds/dialogue1/BF_Line2.ogg
+shared:assets/shared/sounds/dialogue1/BF_Line2.2.ogg
+shared:assets/shared/sounds/dialogue1/Spinel_Line2.ogg
+shared:assets/shared/sounds/dialogue1/fuck it.ogg
+shared:assets/shared/sounds/dialogue1/BF_Line3.ogg
+shared:assets/shared/sounds/dialogue1/fuck it.ogg
+shared:assets/shared/sounds/dialogue1/Spinel_Line3.ogg
