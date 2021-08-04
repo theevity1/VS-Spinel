@@ -217,6 +217,7 @@ class PlayState extends MusicBeatState
 	public function addObject(object:FlxBasic) { add(object); }
 	public function removeObject(object:FlxBasic) { remove(object); }
 
+	var resyncingVocals:Bool = true;
 
 	override public function create()
 	{
@@ -1806,16 +1807,19 @@ class PlayState extends MusicBeatState
 
 	function resyncVocals():Void
 	{
-		vocals.pause();
+		if (resyncingVocals) {
+			vocals.pause();
 
-		FlxG.sound.music.play();
-		Conductor.songPosition = FlxG.sound.music.time;
-		vocals.time = Conductor.songPosition;
-		vocals.play();
+			FlxG.sound.music.play();
+			Conductor.songPosition = FlxG.sound.music.time;
+			vocals.time = Conductor.songPosition;
+			vocals.play();
 
-		#if windows
-		DiscordClient.changePresence(detailsText + " " + SONG.song + " (" + storyDifficultyText + ") " + Ratings.GenerateLetterRank(accuracy), "\nAcc: " + HelperFunctions.truncateFloat(accuracy, 2) + "% | Score: " + songScore + " | Misses: " + misses  , iconRPC);
-		#end
+			#if windows
+			DiscordClient.changePresence(detailsText + " " + SONG.song + " (" + storyDifficultyText + ") " + Ratings.GenerateLetterRank(accuracy), "\nAcc: " + HelperFunctions.truncateFloat(accuracy, 2) + "% | Score: " + songScore + " | Misses: " + misses  , iconRPC);
+			#end
+		} else
+			Conductor.songPosition = FlxG.sound.music.time;	
 	}
 
 	private var paused:Bool = false;
@@ -2679,7 +2683,11 @@ class PlayState extends MusicBeatState
 					{
 						inCutscene = true;
 						camZooming = false;
-						
+						resyncingVocals = false;
+						FlxG.sound.music.stop();
+						vocals.stop();
+						paused = true;
+						boyfriend.stunned = true;
 						dialogue = CoolUtil.coolTextFile(Paths.txt(songLowercase + "/endDialogue"));
 						var doof:DialogueBox = new DialogueBox(false, dialogue);
 						doof.scrollFactor.set();
