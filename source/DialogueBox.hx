@@ -36,6 +36,7 @@ class DialogueBox extends FlxSpriteGroup
 	var gfPortrait:FlxSprite;
 	var bfPortrait:FlxSprite;
 	var spinelPortrait:FlxSprite;
+	var spineldifPortrait:FlxSprite;
 
 	var handSelect:FlxSprite;
 	var bgFade:FlxSprite;
@@ -81,6 +82,7 @@ class DialogueBox extends FlxSpriteGroup
 			portraitLeft = new FlxSprite(-35, -67);
 			portraitLeft.frames = Paths.getSparrowAtlas('spinel/portraits/spinelspritedialogue');
 			portraitLeft.animation.addByPrefix('smug', 'smug', 24, false);
+			portraitLeft.animation.addByPrefix('angry', 'angry', 24, false);
 			portraitLeft.setGraphicSize(Std.int(portraitLeft.width * 0.88));
 			portraitLeft.scrollFactor.set();
 			portraitLeft.antialiasing = true;
@@ -92,6 +94,7 @@ class DialogueBox extends FlxSpriteGroup
 		portraitRight.frames = Paths.getSparrowAtlas('spinel/portraits/bf_sprite_dialogue');
 		portraitRight.animation.addByPrefix('yes', 'yes', 24, false);
 		portraitRight.animation.addByPrefix('excited', 'excited', 24, false);
+		portraitRight.animation.addByPrefix('sarcasm', 'Sarcasm', 24, false);
 		portraitRight.setGraphicSize(Std.int(portraitRight.width * 0.9));
 		portraitRight.updateHitbox();
 		portraitRight.scrollFactor.set();
@@ -129,10 +132,17 @@ class DialogueBox extends FlxSpriteGroup
 		spinelPortrait.antialiasing = true;
 		add(spinelPortrait);
 		spinelPortrait.visible = false;
+
+		spineldifPortrait = new FlxSprite(-37, -40);
+		spineldifPortrait.frames = Paths.getSparrowAtlas('spinel/portraits/spinelspritedialogue');
+		spineldifPortrait.animation.addByPrefix('angry', 'angry', 24, false);
+		spineldifPortrait.setGraphicSize(Std.int(spineldifPortrait.width * 0.9));
+		spineldifPortrait.scrollFactor.set();
+		spineldifPortrait.antialiasing = true;
+		add(spineldifPortrait);
+		spineldifPortrait.visible = false;
 		
 		box.animation.play('normalOpen');
-		if (PlayState.curStage != 'injector')
-			box.setGraphicSize(Std.int(box.width * PlayState.daPixelZoom * 0.9));
 		box.updateHitbox();
 		add(box);
 
@@ -187,6 +197,7 @@ class DialogueBox extends FlxSpriteGroup
 			{
 				remove(dialogue);
 				remove(SkipThisShit);
+				dialogueSound.stop();
 				isEnding = true;
 	
 				new FlxTimer().start(0.2, function(tmr:FlxTimer)
@@ -198,6 +209,7 @@ class DialogueBox extends FlxSpriteGroup
 					gfPortrait.visible = false;
 					bfPortrait.visible = false;
 					spinelPortrait.visible = false;
+					spineldifPortrait.visible = false;
 					swagDialogue.alpha -= 1 / 5;
 					dropText.alpha = swagDialogue.alpha;
 				}, 5);
@@ -225,6 +237,7 @@ class DialogueBox extends FlxSpriteGroup
 				{
 					isEnding = true;
 					remove(SkipThisShit);
+					dialogueSound.stop();
 					
 					new FlxTimer().start(0.2, function(tmr:FlxTimer)
 					{
@@ -235,6 +248,7 @@ class DialogueBox extends FlxSpriteGroup
 						gfPortrait.visible = false;
 						bfPortrait.visible = false;
 						spinelPortrait.visible = false;
+						spineldifPortrait.visible = false;
 						swagDialogue.alpha -= 1 / 5;
 						dropText.alpha = swagDialogue.alpha;
 					}, 5);
@@ -283,6 +297,7 @@ class DialogueBox extends FlxSpriteGroup
 				portraitLeft.visible = false;
 				bfPortrait.visible = false;
 				spinelPortrait.visible = false;
+				spineldifPortrait.visible = false;
 				if (!portraitLeft.visible)
 				{
 					gfPortrait.visible = true;
@@ -293,6 +308,7 @@ class DialogueBox extends FlxSpriteGroup
 				portraitLeft.visible = false;
 				bfPortrait.visible = false;
 				spinelPortrait.visible = false;
+				spineldifPortrait.visible = false;
 				if (!portraitLeft.visible)
 				{
 					gfPortrait.visible = true;
@@ -303,15 +319,28 @@ class DialogueBox extends FlxSpriteGroup
 				gfPortrait.visible = false;
 				bfPortrait.visible = false;
 				spinelPortrait.visible = false;
+				spineldifPortrait.visible = false;
 				if (!portraitLeft.visible)
 				{
 					portraitLeft.visible = true;
 					portraitLeft.animation.play('smug');
 				}
+			case 'spinelrage':
+				portraitRight.visible = false;
+				gfPortrait.visible = false;
+				bfPortrait.visible = false;
+				spinelPortrait.visible = false;
+				spineldifPortrait.visible = false;
+				if (!portraitLeft.visible)
+				{
+					spineldifPortrait.visible = true;
+					spineldifPortrait.animation.play('angry');
+				}
 			case 'spinellol':
 				portraitRight.visible = false;
 				gfPortrait.visible = false;
 				bfPortrait.visible = false;
+				spineldifPortrait.visible = false;
 				if (!portraitLeft.visible)
 				{
 					spinelPortrait.visible = true;
@@ -321,6 +350,7 @@ class DialogueBox extends FlxSpriteGroup
 				gfPortrait.visible = false;
 				portraitLeft.visible = false;
 				spinelPortrait.visible = false;
+				spineldifPortrait.visible = false;
 				if (!portraitRight.visible)
 				{
 					bfPortrait.visible = true;
@@ -330,6 +360,7 @@ class DialogueBox extends FlxSpriteGroup
 				gfPortrait.visible = false;
 				portraitLeft.visible = false;
 				spinelPortrait.visible = false;
+				spineldifPortrait.visible = false;
 				if (!portraitRight.visible)
 				{
 					bfPortrait.visible = true;
@@ -340,6 +371,7 @@ class DialogueBox extends FlxSpriteGroup
 				portraitLeft.visible = false;
 				bfPortrait.visible = false;
 				spinelPortrait.visible = false;
+				spineldifPortrait.visible = false;
 				if (!portraitRight.visible)
 				{
 					portraitRight.visible = true;
@@ -350,10 +382,22 @@ class DialogueBox extends FlxSpriteGroup
 				portraitLeft.visible = false;
 				bfPortrait.visible = false;
 				spinelPortrait.visible = false;
+				spineldifPortrait.visible = false;
 				if (!portraitRight.visible)
 				{
 					portraitRight.visible = true;
 					portraitRight.animation.play('yes');
+				}
+			case 'bfsar':
+				gfPortrait.visible = false;
+				portraitLeft.visible = false;
+				bfPortrait.visible = false;
+				spinelPortrait.visible = false;
+				spineldifPortrait.visible = false;
+				if (!portraitRight.visible)
+				{
+					portraitRight.visible = true;
+					portraitRight.animation.play('sarcasm');
 				}
 		}
 	}

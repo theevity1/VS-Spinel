@@ -1,5 +1,5 @@
 bf:BF_Line1:BEEP BOOP BAA- 
-bfwor:BF_Line1.1:I MEAN—WoAH, dude watch where you’re going!
+bfwor:BF_Line1.1:I MEAN—, dude watch where you’re going!
 spinellol:Spinel_Line1:I will make this quick and simple for ya, ya snack-sized sucker. I’m looking for Steven Universe. 
 spinel:Spinel_Line1.1:If you tell me where he is, you won’t get pounded into the dirt.
 bfyes:BF_Line2:HA! That’s funny, but no. My boy left me in charge and I’m not going back on that. 
@@ -7,5 +7,5 @@ bfyes:BF_Line2.2:Me and Universe are homies. If you think I’m spilling anythin
 spinel:Spinel_Line2:Hm suit yourself~! I guess you won’t mind if I destroy your planet then?
 gf:girlfriendline_1:C’mon babe you should just let Steven handle this, he actually has gem powers that could stop h--
 bfexc:BF_Line3:I HAVE AN IDEA! How about this… if you beat me in a song battle, I’ll tell you everything.
-gfdif:girlfriendline_2:Why do I even try to tell you anything.
-spinel:Spinel_Line3:Hmmmm… I like those odds, twerp! Let’s go!
+gfdif:girlfriendline_2:Why do i even try telling you anything.
+spinel:Spinel_Line3:Huh, I like those odds, twerp! Let’s go!

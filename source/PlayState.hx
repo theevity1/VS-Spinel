@@ -217,6 +217,7 @@ class PlayState extends MusicBeatState
 	public function addObject(object:FlxBasic) { add(object); }
 	public function removeObject(object:FlxBasic) { remove(object); }
 
+	var resyncingVocals:Bool = true;
 
 	override public function create()
 	{
@@ -678,29 +679,57 @@ class PlayState extends MusicBeatState
 			}
 			case 'field':
 				{
-						defaultCamZoom = 0.52;
+						defaultCamZoom = 0.50;
 						curStage = 'field';
-						var bg:FlxSprite = new FlxSprite(-2245, -1760).loadGraphic(Paths.image('spinel/BG/first/sky'));
-						bg.antialiasing = true;
-						bg.setGraphicSize(Std.int(bg.width * 0.7));
-						bg.scrollFactor.set(0.9, 0.9);
-						bg.active = false;
-						add(bg);
+						var bg:FlxSprite = new FlxSprite(-1280, -770).loadGraphic(Paths.image('spinel/BG/first/SKY'));
+                        bg.antialiasing = true;
+                        bg.scrollFactor.set(0.9, 0.9);
+                        bg.active = false;
+						bg.setGraphicSize(Std.int(bg.width * 0.96));
+                        add(bg);
 
-						var bg2:FlxSprite = new FlxSprite(-2245, -1760).loadGraphic(Paths.image('spinel/BG/first/injector'));
-						bg2.antialiasing = true;
-						bg2.setGraphicSize(Std.int(bg2.width * 0.7));
-						bg2.scrollFactor.set(1, 1);
-						bg2.active = false;
-						add(bg2);
-	
-						var bg3:FlxSprite = new FlxSprite(-1300, -1100).loadGraphic(Paths.image('spinel/BG/first/floor'));
-						bg3.setGraphicSize(Std.int(bg3.width * 0.72));
-						bg3.updateHitbox();
-						bg3.antialiasing = true;
-						bg3.scrollFactor.set(0.9, 0.9);
-						bg3.active = false;
-						add(bg3);
+                        var bg2:FlxSprite = new FlxSprite(-1280, -770).loadGraphic(Paths.image('spinel/BG/first/BG'));
+                        bg2.antialiasing = true;
+                        bg2.scrollFactor.set(1, 1);
+                        bg2.active = false;
+						bg2.setGraphicSize(Std.int(bg2.width * 0.96));
+                        add(bg2);
+
+                        var bg3:FlxSprite = new FlxSprite(-1280, -600).loadGraphic(Paths.image('spinel/BG/first/CLOUDS'));
+                        bg3.updateHitbox();
+                        bg3.antialiasing = true;
+                        bg3.scrollFactor.set(0.9, 0.9);
+                        bg3.active = false;
+						bg3.setGraphicSize(Std.int(bg3.width * 0.96));
+                        add(bg3);
+
+						var bg4:FlxSprite = new FlxSprite(-1800, 390);
+                        bg4.frames = Paths.getSparrowAtlas("spinel/BG/first/FLOOR", "shared");
+                        bg4.animation.addByPrefix("calm", "GRASS", 24, true); 
+                        bg4.animation.play("calm");
+						bg4.updateHitbox();
+                        bg4.antialiasing = true;
+                        bg4.scrollFactor.set(0.9, 0.9);
+						bg4.setGraphicSize(Std.int(bg4.width * 0.92));
+                        add(bg4);
+
+						var bg5:FlxSprite = new FlxSprite(-1000, -995);
+                        bg5.frames = Paths.getSparrowAtlas("spinel/BG/first/INJECTOR", "shared");
+                        bg5.animation.addByPrefix("spin", "BIGINJECTOR", 24, true); 
+                        bg5.animation.play("spin");
+                        bg5.antialiasing = true;
+                        bg5.scrollFactor.set(0.9, 0.9);
+                        bg5.updateHitbox();
+						bg5.setGraphicSize(Std.int(bg5.width * 0.80));
+                        add(bg5);
+
+                        var bg6:FlxSprite = new FlxSprite(-1180, -770).loadGraphic(Paths.image('spinel/BG/first/DIRT'));
+                        bg6.updateHitbox();
+                        bg6.antialiasing = true;
+                        bg6.scrollFactor.set(0.9, 0.9);
+                        bg6.active = false;
+						bg6.setGraphicSize(Std.int(bg6.width * 0.80));
+                        add(bg6);
 				}
 
 			case 'injector':
@@ -740,7 +769,7 @@ class PlayState extends MusicBeatState
 
 						if (SONG.song.toLowerCase() == "other-friends")
 							{
-								bg6 = new FlxSprite(750, 284);
+								bg6 = new FlxSprite(750, 318);
 								bg6.frames = Paths.getSparrowAtlas("spinel/BG/second/particles");
 								bg6.animation.addByPrefix("vibe", "Particles", 24, false); 
 								bg6.scrollFactor.set(0.9, 0.9);
@@ -897,8 +926,11 @@ class PlayState extends MusicBeatState
 				gf.x += 180;
 				gf.y += 300;
 			case 'field':
-				dad.x -= 150;
+				dad.x -= 170;
 				dad.y += 100;
+				boyfriend.x += 160;
+				boyfriend.y += 100;
+				gf.x += 20;
 			case 'injector':
 				boyfriend.x += 270;
 				boyfriend.y += 100;
@@ -1028,7 +1060,7 @@ class PlayState extends MusicBeatState
 		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8), this,
 			'health', 0, 2);
 		healthBar.scrollFactor.set();
-		healthBar.createFilledBar(0xFFFF0000, 0xFFCCFF66);
+		healthBar.createFilledBar(0xFFE5458C, 0xFFCCFF66);
 		// healthBar
 		add(healthBar);
 
@@ -1070,7 +1102,8 @@ class PlayState extends MusicBeatState
 		add(iconP1);
 
 		iconP2 = new HealthIcon(SONG.player2, false);
-		iconP2.y = healthBar.y - (iconP2.height / 2);
+		iconP2.y = healthBar.y - 25 - (iconP2.height / 2);
+		iconP2.antialiasing = true;
 		add(iconP2);
 
 		strumLineNotes.cameras = [camHUD];
@@ -1806,16 +1839,19 @@ class PlayState extends MusicBeatState
 
 	function resyncVocals():Void
 	{
-		vocals.pause();
+		if (resyncingVocals) {
+			vocals.pause();
 
-		FlxG.sound.music.play();
-		Conductor.songPosition = FlxG.sound.music.time;
-		vocals.time = Conductor.songPosition;
-		vocals.play();
+			FlxG.sound.music.play();
+			Conductor.songPosition = FlxG.sound.music.time;
+			vocals.time = Conductor.songPosition;
+			vocals.play();
 
-		#if windows
-		DiscordClient.changePresence(detailsText + " " + SONG.song + " (" + storyDifficultyText + ") " + Ratings.GenerateLetterRank(accuracy), "\nAcc: " + HelperFunctions.truncateFloat(accuracy, 2) + "% | Score: " + songScore + " | Misses: " + misses  , iconRPC);
-		#end
+			#if windows
+			DiscordClient.changePresence(detailsText + " " + SONG.song + " (" + storyDifficultyText + ") " + Ratings.GenerateLetterRank(accuracy), "\nAcc: " + HelperFunctions.truncateFloat(accuracy, 2) + "% | Score: " + songScore + " | Misses: " + misses  , iconRPC);
+			#end
+		} else
+			Conductor.songPosition = FlxG.sound.music.time;	
 	}
 
 	private var paused:Bool = false;
@@ -1987,13 +2023,15 @@ class PlayState extends MusicBeatState
 
 		if (health > 2)
 			health = 2;
-		if (healthBar.percent < 20)
+		if (healthBar.percent < 50)
 			iconP1.animation.curAnim.curFrame = 1;
 		else
 			iconP1.animation.curAnim.curFrame = 0;
 
 		if (healthBar.percent > 80)
 			iconP2.animation.curAnim.curFrame = 1;
+		else if (healthBar.percent < 50)
+			iconP2.animation.curAnim.curFrame = 2;
 		else
 			iconP2.animation.curAnim.curFrame = 0;
 
@@ -2195,6 +2233,10 @@ class PlayState extends MusicBeatState
 					case 'senpai-angry':
 						camFollow.y = dad.getMidpoint().y - 430;
 						camFollow.x = dad.getMidpoint().x - 100;
+					case 'Spinel':
+						camFollow.y = dad.getMidpoint().y - 200;
+					case 'Spinel-su':
+						camFollow.y = dad.getMidpoint().y + 85;
 				}
 
 				if (dad.curCharacter == 'mom')
@@ -2233,6 +2275,8 @@ class PlayState extends MusicBeatState
 						camFollow.y = boyfriend.getMidpoint().y - 200;
 					case 'injector':
 						camFollow.y = boyfriend.getMidpoint().y - 150;
+					case 'field':
+						camFollow.y = boyfriend.getMidpoint().y - 120;
 				}
 			}
 		}
@@ -2672,14 +2716,23 @@ class PlayState extends MusicBeatState
 					var poop:() -> Void = function()
 					{
 						PlayState.SONG = Song.loadFromJson(nextSongLowercase + difficulty, PlayState.storyPlaylist[0]);
-						LoadingState.loadAndSwitchState(new PlayState());
+						switch (nextSongLowercase) {
+							case 'change':
+								LoadingState.loadAndSwitchState(new VideoState("assets/videos/cutscene_2_final.webm", new PlayState()));
+							default:
+								LoadingState.loadAndSwitchState(new PlayState());
+						}
 					};
 					
 					if (songLowercase == "other-friends")
 					{
 						inCutscene = true;
 						camZooming = false;
-						
+						resyncingVocals = false;
+						FlxG.sound.music.stop();
+						vocals.stop();
+						paused = true;
+						boyfriend.stunned = true;
 						dialogue = CoolUtil.coolTextFile(Paths.txt(songLowercase + "/endDialogue"));
 						var doof:DialogueBox = new DialogueBox(false, dialogue);
 						doof.scrollFactor.set();
@@ -3535,7 +3588,7 @@ class PlayState extends MusicBeatState
 		}
 		#end
 
-		if (curStage == 'injector')
+		if (curStage == '')
 			{
 			  switch(curStep)
 			  {		  

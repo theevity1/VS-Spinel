@@ -397,22 +397,13 @@ class TitleState extends MusicBeatState
 
 		switch (curBeat)
 		{
-			case 3:
-				createCoolText([curWacky[0]]);
-			// credTextShit.visible = true;
-			case 4:
-				addMoreText(curWacky[1]);
-			// credTextShit.text += '\nlmao';
 			case 5:
-				deleteCoolText();
-			// credTextShit.visible = false;
-			// credTextShit.text = "Friday";
-			// credTextShit.screenCenter();
-			case 6:
-				addMoreText('Friday');
+				addMoreText('Happy Two Year');
 			// credTextShit.visible = true;
+			case 6:
+				addMoreText('Anniversary');
 			case 7:
-				addMoreText('Night');
+				addMoreText('Steven Universe The Movie');
 
 			case 8:
 				skipIntro();

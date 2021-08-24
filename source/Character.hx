@@ -156,34 +156,51 @@ class Character extends FlxSprite
 			case 'Spinel':
 			tex = Paths.getSparrowAtlas('spinel/assets/Spinel', 'shared');
 			frames = tex;
-			animation.addByPrefix('idle', 'SPINELIDLE', 24);
+			animation.addByPrefix('idle', 'IDLEMOVE', 24);
 			animation.addByPrefix('singUP', 'SPINELUP', 24, false);
 			animation.addByPrefix('singRIGHT', 'SPINELRIGHT', 24, false);
 			animation.addByPrefix('singDOWN', 'SPINELDOWN', 24, false);
-			animation.addByPrefix('singLEFT', 'SPINELEFT', 24, false);
+			animation.addByPrefix('singLEFT', 'SPINELLEFT', 24, false);
 
 			addOffset('idle', 0, 190);
-			addOffset("singUP", -36, 372);
-			addOffset("singRIGHT", -100, 177);
-			addOffset("singLEFT", 75, 123);
-			addOffset("singDOWN", -89, -181);
+			addOffset("singUP", -36, 351);
+			addOffset("singRIGHT", -120, 51);
+			addOffset("singLEFT", 245, 113);
+			addOffset("singDOWN", -169, -271);
 
 			playAnim('idle');
 
 			case 'Spinel-su':
 			tex = Paths.getSparrowAtlas('spinel/assets/Spinel2', 'shared');
 			frames = tex;
-			animation.addByPrefix('idle', 'SPINELIDLE', 24);
-			animation.addByPrefix('singUP', 'SPINELUP', 24, false);
-			animation.addByPrefix('singRIGHT', 'SPINELRIGHT', 24, false);
-			animation.addByPrefix('singDOWN', 'SPINELDOWN', 24, false);
-			animation.addByPrefix('singLEFT', 'SPINELEFT', 24, false);
+			animation.addByPrefix('idle', 'idle', 24);
+			animation.addByPrefix('singUP', 'up', 24, false);
+			animation.addByPrefix('singRIGHT', 'right', 24, false);
+			animation.addByPrefix('singDOWN', 'downagain', 24, false);
+			animation.addByPrefix('singLEFT', 'leftagain', 24, false);
 
 			addOffset('idle', 0, 190);
-			addOffset("singUP", -36, 372);
-			addOffset("singRIGHT", -130, 92);
-			addOffset("singLEFT", 69, 143);
-			addOffset("singDOWN", -119, -164);
+			addOffset("singUP", -36, 352);
+			addOffset("singRIGHT", -130, 78);
+			addOffset("singLEFT", 79, 123);
+			addOffset("singDOWN", -159, -269);
+
+			playAnim('idle');
+
+			case 'Spinel-bonus':
+			tex = Paths.getSparrowAtlas('spinel/assets/Spinel3', 'shared');
+			frames = tex;
+			animation.addByPrefix('idle', 'idle', 24);
+			animation.addByPrefix('singUP', 'up', 24, false);
+			animation.addByPrefix('singRIGHT', 'right', 24, false);
+			animation.addByPrefix('singDOWN', 'downagain', 24, false);
+			animation.addByPrefix('singLEFT', 'leftagain', 24, false);
+
+			addOffset('idle', 0, 190);
+			addOffset("singUP", -36, 352);
+			addOffset("singRIGHT", -130, 78);
+			addOffset("singLEFT", 79, 123);
+			addOffset("singDOWN", -159, -269);
 
 			playAnim('idle');
 
@@ -346,13 +363,11 @@ class Character extends FlxSprite
 				animation.addByPrefix('singLEFTmiss', 'BF NOTE LEFT MISS', 24, false);
 				animation.addByPrefix('singRIGHTmiss', 'BF NOTE RIGHT MISS', 24, false);
 				animation.addByPrefix('singDOWNmiss', 'BF NOTE DOWN MISS', 24, false);
-				animation.addByPrefix('hey', 'BF HEY', 24, false);
 
 				animation.addByPrefix('firstDeath', "BF dies", 24, false);
 				animation.addByPrefix('deathLoop', "BF Dead Loop", 24, true);
 				animation.addByPrefix('deathConfirm', "BF Dead confirm", 24, false);
 
-				animation.addByPrefix('scared', 'BF idle shaking', 24);
 
 				addOffset('idle', -5);
 				addOffset("singUP", -29, 27);
@@ -363,11 +378,9 @@ class Character extends FlxSprite
 				addOffset("singRIGHTmiss", -30, 21);
 				addOffset("singLEFTmiss", 12, 24);
 				addOffset("singDOWNmiss", -11, -19);
-				addOffset("hey", 7, 4);
 				addOffset('firstDeath', 37, 11);
-				addOffset('deathLoop', 37, 5);
-				addOffset('deathConfirm', 37, 69);
-				addOffset('scared', -4);
+				addOffset('deathLoop', -41, -386);
+				addOffset('deathConfirm', -3, 29);
 
 				playAnim('idle');
 

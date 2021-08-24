@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="FLOOR.png">
+	<!-- Created with Adobe Animate version 21.0.0.35450 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="GRASS0000" x="0" y="0" width="6750" height="1346"/>
+	<SubTexture name="GRASS0001" x="0" y="0" width="6750" height="1346"/>
+	<SubTexture name="GRASS0002" x="0" y="0" width="6750" height="1346"/>
+	<SubTexture name="GRASS0003" x="0" y="0" width="6750" height="1346"/>
+	<SubTexture name="GRASS0004" x="0" y="0" width="6750" height="1346"/>
+	<SubTexture name="GRASS0005" x="0" y="1351" width="6750" height="1346"/>
+	<SubTexture name="GRASS0006" x="0" y="1351" width="6750" height="1346"/>
+	<SubTexture name="GRASS0007" x="0" y="1351" width="6750" height="1346"/>
+	<SubTexture name="GRASS0008" x="0" y="1351" width="6750" height="1346"/>
+	<SubTexture name="GRASS0009" x="0" y="1351" width="6750" height="1346"/>
+	<SubTexture name="GRASS0010" x="0" y="2702" width="6750" height="1346"/>
+	<SubTexture name="GRASS0011" x="0" y="2702" width="6750" height="1346"/>
+	<SubTexture name="GRASS0012" x="0" y="2702" width="6750" height="1346"/>
+	<SubTexture name="GRASS0013" x="0" y="2702" width="6750" height="1346"/>
+	<SubTexture name="GRASS0014" x="0" y="2702" width="6750" height="1346"/>
+</TextureAtlas>

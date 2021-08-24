@@ -1,8 +1,6 @@
 bf
 bf-su
 bf-fail
-gf
 Spinel
 Spinel-su
-mom-car
-bf-car
+Spinel-bonus
