@@ -110,6 +110,7 @@ class PlayState extends MusicBeatState
 
 	public var notes:FlxTypedGroup<Note>;
 	private var unspawnNotes:Array<Note> = [];
+	var moveSky:Bool = false;
 
 	public var strumLine:FlxSprite;
 	private var curSection:Int = 0;
@@ -136,6 +137,7 @@ class PlayState extends MusicBeatState
 	private var totalPlayed:Int = 0;
 	private var ss:Bool = false;
 
+	var theSky:FlxSprite;
 
 	private var healthBarBG:FlxSprite;
 	private var healthBar:FlxBar;
@@ -158,6 +160,8 @@ class PlayState extends MusicBeatState
 
 	var halloweenBG:FlxSprite;
 	var isHalloween:Bool = false;
+
+	var useRegularCamera:Bool = true;
 
 	var phillyCityLights:FlxTypedGroup<FlxSprite>;
 	var phillyTrain:FlxSprite;
@@ -735,8 +739,9 @@ class PlayState extends MusicBeatState
 			case 'injector':
 				{
 						defaultCamZoom = 0.52;
+						//defaultCamZoom = 0.1;
 						curStage = 'injector';
-						var bg:FlxSprite = new FlxSprite(-1350, -970).loadGraphic(Paths.image('spinel/BG/second/sky'));
+						var bg:FlxSprite = new FlxSprite(-1860, -1385).loadGraphic(Paths.image('spinel/BG/second/theBG'));
 						bg.antialiasing = true;
 						bg.scrollFactor.set(0.9, 0.9);
 						bg.active = false;
@@ -746,26 +751,26 @@ class PlayState extends MusicBeatState
 						bg5.antialiasing = true;
 						bg5.scrollFactor.set(0.9, 0.9);
 						bg5.active = false;
-						add(bg5);
+						//add(bg5);
 
 						var bg2:FlxSprite = new FlxSprite(-1350, -970).loadGraphic(Paths.image('spinel/BG/second/clouds'));
 						bg2.antialiasing = true;
 						bg2.scrollFactor.set(1, 1);
 						bg2.active = false;
-						add(bg2);
+						//add(bg2);
 	
 						var bg3:FlxSprite = new FlxSprite(-1350, -970).loadGraphic(Paths.image('spinel/BG/second/black'));
 						bg3.updateHitbox();
 						bg3.antialiasing = true;
 						bg3.scrollFactor.set(0.9, 0.9);
 						bg3.active = false;
-						add(bg3);
+						//add(bg3);
 
 						var bg7:FlxSprite = new FlxSprite(-4000, -110);
 						bg7.frames = Paths.getSparrowAtlas("spinel/BG/second/clouds2");
 						bg7.animation.addByPrefix("woo", "Clouds", 24, true); 
 						bg7.animation.play("woo");
-						add(bg7);
+						//add(bg7);
 
 						if (SONG.song.toLowerCase() == "other-friends")
 							{
@@ -774,7 +779,23 @@ class PlayState extends MusicBeatState
 								bg6.animation.addByPrefix("vibe", "Particles", 24, false); 
 								bg6.scrollFactor.set(0.9, 0.9);
 								add(bg6);
-							}
+							}	
+
+						var smoke:FlxSprite = new FlxSprite(-1584, -600);
+						smoke.frames = Paths.getSparrowAtlas("spinel/BG/second/smoke");
+						smoke.animation.addByPrefix("idle", "Symbol 3 instance 1", 24, true); 
+						smoke.animation.play("idle");
+						smoke.antialiasing = true;
+						smoke.origin.set(0, 0);
+						smoke.scale.set(2, 2);
+						add(smoke);
+
+						var mid:FlxSprite = new FlxSprite(-2300, 0).loadGraphic(Paths.image('spinel/BG/second/middleground'));
+						mid.updateHitbox();
+						mid.antialiasing = true;
+						mid.scrollFactor.set(0.9, 0.9);
+						mid.active = false;
+						add(mid);
 
 						var bg4:FlxSprite = new FlxSprite(-1350, -920).loadGraphic(Paths.image('spinel/BG/second/injector'));
 						bg4.updateHitbox();
@@ -782,6 +803,22 @@ class PlayState extends MusicBeatState
 						bg4.scrollFactor.set(0.9, 0.9);
 						bg4.active = false;
 						add(bg4);
+
+						theSky = new FlxSprite(-1423, -8970).loadGraphic(Paths.image('spinel/BG/second/cloud'));
+						theSky.updateHitbox();
+						theSky.antialiasing = true;
+						theSky.scrollFactor.set(0.9, 0.9);
+						theSky.active = false;
+						add(theSky);
+
+						var transStuff:FlxSprite = new FlxSprite(-1797, -2759).loadGraphic(Paths.image('spinel/BG/second/transition stuff'));
+						transStuff.updateHitbox();
+						transStuff.antialiasing = true;
+						transStuff.scrollFactor.set(0.9, 0.9);
+						transStuff.active = false;
+						add(transStuff);
+						dad = new Character(0, -10000, 'spinel-fall');
+							boyfriend = new Boyfriend(1040, -10000, 'bf-fail');
 				}
 			case 'stage':
 				{
@@ -936,6 +973,10 @@ class PlayState extends MusicBeatState
 				boyfriend.y += 100;
 				dad.x -= 200;
 				dad.y += 100;
+				trace(dad.x);
+				trace(dad.y);
+				trace(boyfriend.x);
+				trace(boyfriend.y);
 			case 'schoolEvil':
 				if(FlxG.save.data.distractions){
 				// trailArea.scrollFactor.set();
@@ -2205,7 +2246,7 @@ class PlayState extends MusicBeatState
 				luaModchart.setVar("mustHit",PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection);
 			#end
 
-			if (camFollow.x != dad.getMidpoint().x + 150 && !PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection)
+			if (camFollow.x != dad.getMidpoint().x + 150 && !PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection && useRegularCamera)
 			{
 				var offsetX = 0;
 				var offsetY = 0;
@@ -2243,7 +2284,7 @@ class PlayState extends MusicBeatState
 					vocals.volume = 1;
 			}
 
-			if (PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection && camFollow.x != boyfriend.getMidpoint().x - 100)
+			if (PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection && camFollow.x != boyfriend.getMidpoint().x - 100 && useRegularCamera)
 			{
 				var offsetX = 0;
 				var offsetY = 0;
@@ -2278,7 +2319,9 @@ class PlayState extends MusicBeatState
 					case 'field':
 						camFollow.y = boyfriend.getMidpoint().y - 120;
 				}
+				
 			}
+			trace(camFollow.x + ' ' + camFollow.y);
 		}
 
 		if (camZooming)
@@ -2378,6 +2421,11 @@ class PlayState extends MusicBeatState
 
 		if (generatedMusic)
 			{
+				if (moveSky) {
+					theSky.y-= 40;
+					if (theSky.y <= -13297)
+						theSky.y = -8970;
+				}
 				notes.forEachAlive(function(daNote:Note)
 				{	
 
@@ -3639,6 +3687,37 @@ class PlayState extends MusicBeatState
 		}
 		#end
 
+		switch (SONG.song.toLowerCase()) {
+			case 'change':
+				switch (curBeat) {
+					case 4:
+						useRegularCamera = false;
+						camFollow.y = 510;
+						camFollow.x = 780;
+						FlxTween.tween(camFollow, {y: -8000}, 1, {
+							ease: FlxEase.quadInOut,
+							onComplete: function(twn:FlxTween)
+							{
+								remove(dad);
+								dad = new Character(0, -10000, 'spinel-fall');
+								add(dad);
+								FlxTween.tween(dad, {y: -8300}, 0.4, {
+									startDelay: 1,
+									onComplete: function(twn:FlxTween) {
+										moveSky = true;
+									}
+								});
+								remove(boyfriend);
+								boyfriend = new Boyfriend(1040, -10000, 'bf-fail');
+								add(boyfriend);
+								FlxTween.tween(boyfriend, {y: -8200}, 0.4, {
+									startDelay: 1
+								});
+							},
+							startDelay: 1
+						});
+				}
+		}
 		if (curSong == 'Tutorial' && dad.curCharacter == 'gf') {
 			if (curBeat % 2 == 1 && dad.animOffsets.exists('danceLeft'))
 				dad.playAnim('danceLeft');

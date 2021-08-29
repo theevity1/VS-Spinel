@@ -43,6 +43,7 @@ class HealthIcon extends FlxSprite
 		animation.add('Spinel', [24, 25, 26], 0, false, isPlayer);
 		animation.add('Spinel-su', [24, 25, 26], 0, false, isPlayer);
 		animation.add('Spinel-bonus', [24, 25, 26], 0, false, isPlayer);
+		animation.add('spinel-fall', [24, 25, 26], 0, false, isPlayer);
 		animation.play(char);
 
 		switch(char)

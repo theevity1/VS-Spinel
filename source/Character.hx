@@ -154,21 +154,37 @@ class Character extends FlxSprite
 				antialiasing = false;
 
 			case 'Spinel':
-			tex = Paths.getSparrowAtlas('spinel/assets/Spinel', 'shared');
-			frames = tex;
-			animation.addByPrefix('idle', 'IDLEMOVE', 24);
-			animation.addByPrefix('singUP', 'SPINELUP', 24, false);
-			animation.addByPrefix('singRIGHT', 'SPINELRIGHT', 24, false);
-			animation.addByPrefix('singDOWN', 'SPINELDOWN', 24, false);
-			animation.addByPrefix('singLEFT', 'SPINELLEFT', 24, false);
+				tex = Paths.getSparrowAtlas('spinel/assets/Spinel', 'shared');
+				frames = tex;
+				animation.addByPrefix('idle', 'IDLEMOVE', 24);
+				animation.addByPrefix('singUP', 'SPINELUP', 24, false);
+				animation.addByPrefix('singRIGHT', 'SPINELRIGHT', 24, false);
+				animation.addByPrefix('singDOWN', 'SPINELDOWN', 24, false);
+				animation.addByPrefix('singLEFT', 'SPINELLEFT', 24, false);
 
-			addOffset('idle', 0, 190);
-			addOffset("singUP", -36, 351);
-			addOffset("singRIGHT", -120, 51);
-			addOffset("singLEFT", 245, 113);
-			addOffset("singDOWN", -169, -271);
+				addOffset('idle', 0, 190);
+				addOffset("singUP", -36, 351);
+				addOffset("singRIGHT", -120, 51);
+				addOffset("singLEFT", 245, 113);
+				addOffset("singDOWN", -169, -271);
 
-			playAnim('idle');
+				playAnim('idle');
+			case 'spinel-fall':
+				tex = Paths.getSparrowAtlas('spinel/assets/SPINEL_FALLING_SPRITE', 'shared');
+				frames = tex;
+				animation.addByPrefix('idle', 'IDLEMOVE', 24);
+				animation.addByPrefix('singUP', 'SPINELUP', 24, false);
+				animation.addByPrefix('singRIGHT', 'SPINELRIGHT', 24, false);
+				animation.addByPrefix('singDOWN', 'SPINELDOWN', 24, false);
+				animation.addByPrefix('singLEFT', 'SPINELLEFT', 24, false);
+
+				addOffset('idle', 0, 190);
+				addOffset("singUP", 84, 341);
+				addOffset("singRIGHT", -140, -59);
+				addOffset("singLEFT", 35, 113);
+				addOffset("singDOWN", 11, -341);
+
+				playAnim('idle');
 
 			case 'Spinel-su':
 			tex = Paths.getSparrowAtlas('spinel/assets/Spinel2', 'shared');
