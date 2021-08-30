@@ -1,3 +1,4 @@
 other-friends:Spinel:1
-change:Spinel:2
+Injector Carousel:Spinel:4
+Unchangeable:Spinel:2
 apocalypse party:Spinel:3

@@ -1,6 +1,7 @@
 bf
 bf-su
 bf-fail
+bf-bonus
 Spinel
 Spinel-su
 Spinel-bonus

@@ -66,7 +66,7 @@ class DialogueBox extends FlxSpriteGroup
 		switch (PlayState.SONG.song.toLowerCase())
 		{
 			case 'other-friends':
-				hasDialog = true;
+				hasDialog = false;
 				box.frames = Paths.getSparrowAtlas('spinel/box');
 				box.animation.addByPrefix('normalOpen', 'Speech Bubble Normal Open', 24, false);
 				box.animation.addByIndices('normal', 'speech bubble normal', [4], "", 24, true);

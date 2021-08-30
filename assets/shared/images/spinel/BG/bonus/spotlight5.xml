@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="spotlight5.png">
+	<!-- Created with Adobe Animate version 21.0.0.35450 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="spotlight50000" x="0" y="0" width="885" height="726" frameX="-84" frameY="-84" frameWidth="1053" frameHeight="894"/>
+	<SubTexture name="spotlight50001" x="890" y="0" width="919" height="760" frameX="-67" frameY="-67" frameWidth="1053" frameHeight="894"/>
+	<SubTexture name="spotlight50002" x="1814" y="0" width="953" height="794" frameX="-50" frameY="-50" frameWidth="1053" frameHeight="894"/>
+	<SubTexture name="spotlight50003" x="2772" y="0" width="987" height="828" frameX="-33" frameY="-33" frameWidth="1053" frameHeight="894"/>
+	<SubTexture name="spotlight50004" x="0" y="833" width="1021" height="862" frameX="-16" frameY="-16" frameWidth="1053" frameHeight="894"/>
+	<SubTexture name="spotlight50005" x="1026" y="833" width="1053" height="894"/>
+	<SubTexture name="spotlight50006" x="2084" y="833" width="1013" height="854" frameX="-20" frameY="-20" frameWidth="1053" frameHeight="894"/>
+	<SubTexture name="spotlight50007" x="3102" y="833" width="969" height="810" frameX="-42" frameY="-42" frameWidth="1053" frameHeight="894"/>
+	<SubTexture name="spotlight50008" x="0" y="1732" width="929" height="770" frameX="-62" frameY="-62" frameWidth="1053" frameHeight="894"/>
+	<SubTexture name="spotlight50009" x="0" y="0" width="885" height="726" frameX="-84" frameY="-84" frameWidth="1053" frameHeight="894"/>
+</TextureAtlas>

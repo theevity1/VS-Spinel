@@ -24,7 +24,7 @@ class StoryMenuState extends MusicBeatState
 	var scoreText:FlxText;
 
 	var weekData:Array<Dynamic> = [
-		['other-friends', 'change']
+		['other-friends', 'Injector Carousel', 'Unchangeable']
 	];
 	var curDifficulty:Int = 1;
 
