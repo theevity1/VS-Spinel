@@ -824,21 +824,21 @@ class PlayState extends MusicBeatState
 				}
 			case 'bonus':
 				{
-					defaultCamZoom = 0.73;
+					defaultCamZoom = 0.53;
 					curStage = 'bonus';
 
 					var bg:FlxSprite = new FlxSprite(-642, -351).loadGraphic(Paths.image('spinel/BG/bonus/sky'));
 					bg.antialiasing = true;
 					bg.scrollFactor.set(0.9, 0.9);
 					bg.active = false;
-					bg.setGraphicSize(Std.int(bg.width * 0.70));
+					bg.setGraphicSize(Std.int(bg.width * 0.75));
 					add(bg);
 
 					var bg2:FlxSprite = new FlxSprite(-642, -351).loadGraphic(Paths.image('spinel/BG/bonus/mountain'));
 					bg2.antialiasing = true;
 					bg2.scrollFactor.set(0.9, 0.9);
 					bg2.active = false;
-					bg2.setGraphicSize(Std.int(bg2.width * 0.70));
+					bg2.setGraphicSize(Std.int(bg2.width * 0.75));
 					add(bg2);
 
 					var bg3:FlxSprite = new FlxSprite(-642, -351).loadGraphic(Paths.image('spinel/BG/bonus/stars'));
@@ -848,14 +848,14 @@ class PlayState extends MusicBeatState
 					bg3.setGraphicSize(Std.int(bg3.width * 0.70));
 					add(bg3);
 					
-					var bg4:FlxSprite = new FlxSprite(-642, -151).loadGraphic(Paths.image('spinel/BG/bonus/wall'));
+					var bg4:FlxSprite = new FlxSprite(-942, -111).loadGraphic(Paths.image('spinel/BG/bonus/wall'));
 					bg4.antialiasing = true;
 					bg4.scrollFactor.set(0.9, 0.9);
 					bg4.active = false;
 					bg4.setGraphicSize(Std.int(bg4.width * 0.58));
 					add(bg4);
 
-					var bg5:FlxSprite = new FlxSprite(-642, -151).loadGraphic(Paths.image('spinel/BG/bonus/wall2'));
+					var bg5:FlxSprite = new FlxSprite(-342, -111).loadGraphic(Paths.image('spinel/BG/bonus/wall2'));
 					bg5.antialiasing = true;
 					bg5.scrollFactor.set(0.9, 0.9);
 					bg5.active = false;
@@ -866,17 +866,17 @@ class PlayState extends MusicBeatState
 					bg6.antialiasing = true;
 					bg6.scrollFactor.set(0.9, 0.9);
 					bg6.active = false;
-					bg6.setGraphicSize(Std.int(bg6.width * 0.90));
+					bg6.setGraphicSize(Std.int(bg6.width * 0.99));
 					add(bg6);
 
-					var bg9:FlxSprite = new FlxSprite(-642, -121).loadGraphic(Paths.image('spinel/BG/bonus/above'));
+					var bg9:FlxSprite = new FlxSprite(-642, -41).loadGraphic(Paths.image('spinel/BG/bonus/above'));
 					bg9.antialiasing = true;
 					bg9.scrollFactor.set(0.9, 0.9);
 					bg9.active = false;
 					bg9.setGraphicSize(Std.int(bg9.width * 0.55));
 					add(bg9);
 
-					var bg7:FlxSprite = new FlxSprite(-602, -101).loadGraphic(Paths.image('spinel/BG/bonus/side'));
+					var bg7:FlxSprite = new FlxSprite(-642, -101).loadGraphic(Paths.image('spinel/BG/bonus/side'));
 					bg7.antialiasing = true;
 					bg7.scrollFactor.set(0.9, 0.9);
 					bg7.active = false;
@@ -931,8 +931,8 @@ class PlayState extends MusicBeatState
 					add(bg13);
 
 					var bg14:FlxSprite = new FlxSprite(-120, 40);
-					bg14.frames = Paths.getSparrowAtlas("spinel/BG/bonus/spotlight4", "shared");
-					bg14.animation.addByPrefix("dance", "spotlight4", 24, true); 
+					bg14.frames = Paths.getSparrowAtlas("spinel/BG/bonus/spotlight5", "shared");
+					bg14.animation.addByPrefix("dance", "spotlight5", 24, true); 
 					bg14.animation.play("dance");
 					bg14.updateHitbox();
 					bg14.antialiasing = true;
@@ -940,14 +940,14 @@ class PlayState extends MusicBeatState
 					bg14.setGraphicSize(Std.int(bg14.width * 0.62));
 					add(bg14);
 
-					var bg15:FlxSprite = new FlxSprite(-1000, -500);
+					var bg15:FlxSprite = new FlxSprite(-1000, -700);
 					bg15.frames = Paths.getSparrowAtlas("spinel/BG/bonus/glow", "shared");
 					bg15.animation.addByPrefix("dance", "glow", 9, true); 
 					bg15.animation.play("dance");
 					bg15.updateHitbox();
 					bg15.antialiasing = true;
 					bg15.scrollFactor.set(0.9, 0.9);
-					bg15.setGraphicSize(Std.int(bg15.width * 0.80));
+					bg15.setGraphicSize(Std.int(bg15.width * 0.59));
 					add(bg15);
 				}
 			case 'stage':
@@ -1067,7 +1067,7 @@ class PlayState extends MusicBeatState
 				dad.y += 100;
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case 'Spinel-bonus':
-				camPos.set(dad.getGraphicMidpoint().x + 200, dad.getGraphicMidpoint().y);
+				camPos.set(dad.getGraphicMidpoint().x + 600, dad.getGraphicMidpoint().y + 800);
 		}
 
 
@@ -1119,9 +1119,9 @@ class PlayState extends MusicBeatState
 				dad.x += 580;
 				dad.y += 850;
 				boyfriend.x += 800;
-				boyfriend.y += 800;
+				boyfriend.y += 860;
 				gf.x += 700;
-				gf.y += 750;
+				gf.y += 780;
 			case 'schoolEvil':
 				if(FlxG.save.data.distractions){
 				// trailArea.scrollFactor.set();
