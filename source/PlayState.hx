@@ -355,6 +355,8 @@ class PlayState extends MusicBeatState
 				dialogue = CoolUtil.coolTextFile(Paths.txt('thorns/thornsDialogue'));
 			case 'other-friends':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('other-friends/dialogue'));
+			case 'unchangeable':
+				dialogue = CoolUtil.coolTextFile(Paths.txt('unchangeable/dialogue'));
 		}
 
 		switch(SONG.stage)
@@ -1360,6 +1362,8 @@ class PlayState extends MusicBeatState
 						camGame.visible = true;
 						showItBitch(doof);
 					}
+				case 'unchangeable':
+					showItBitch(doof);
 				case 'senpai':
 					schoolIntro(doof);
 				case 'roses':
