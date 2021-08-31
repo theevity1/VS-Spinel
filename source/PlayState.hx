@@ -217,7 +217,7 @@ class PlayState extends MusicBeatState
 	private var executeModchart = false;
 
 	// API stuff
-	
+	var speen:SpinelThing;
 	public function addObject(object:FlxBasic) { add(object); }
 	public function removeObject(object:FlxBasic) { remove(object); }
 
@@ -819,8 +819,6 @@ class PlayState extends MusicBeatState
 						add(transStuff);
 						dad = new Character(0, -10000, 'spinel-fall');
 							boyfriend = new Boyfriend(1040, -10000, 'bf-fail');
-<<<<<<< Updated upstream
-=======
 				}
 			case 'bonus':
 				{
@@ -939,17 +937,6 @@ class PlayState extends MusicBeatState
 					bg14.scrollFactor.set(0.9, 0.9);
 					bg14.setGraphicSize(Std.int(bg14.width * 0.62));
 					add(bg14);
-
-					var bg15:FlxSprite = new FlxSprite(-1000, -500);
-					bg15.frames = Paths.getSparrowAtlas("spinel/BG/bonus/glow", "shared");
-					bg15.animation.addByPrefix("dance", "glow", 9, true); 
-					bg15.animation.play("dance");
-					bg15.updateHitbox();
-					bg15.antialiasing = true;
-					bg15.scrollFactor.set(0.9, 0.9);
-					bg15.setGraphicSize(Std.int(bg15.width * 0.80));
-					add(bg15);
->>>>>>> Stashed changes
 				}
 			case 'stage':
 				{
@@ -1074,7 +1061,11 @@ class PlayState extends MusicBeatState
 
 		
 		boyfriend = new Boyfriend(770, 450, SONG.player1);
-
+		speen = new SpinelThing(0, 0);
+		speen.frames = Paths.getSparrowAtlas('spinel/assets/midsong', 'shared');
+		speen.animation.addByPrefix('thething', 'Spinel with BF', 24, false);
+		speen.visible = false;
+		
 		// REPOSITIONING PER STAGE
 		switch (curStage)
 		{
@@ -1112,8 +1103,6 @@ class PlayState extends MusicBeatState
 				trace(dad.y);
 				trace(boyfriend.x);
 				trace(boyfriend.y);
-<<<<<<< Updated upstream
-=======
 			case 'bonus':
 				dad.x += 580;
 				dad.y += 850;
@@ -1121,7 +1110,6 @@ class PlayState extends MusicBeatState
 				boyfriend.y += 800;
 				gf.x += 700;
 				gf.y += 750;
->>>>>>> Stashed changes
 			case 'schoolEvil':
 				if(FlxG.save.data.distractions){
 				// trailArea.scrollFactor.set();
@@ -1147,6 +1135,7 @@ class PlayState extends MusicBeatState
 
 		add(dad);
 		add(boyfriend);
+		add(speen);
 		if (loadRep)
 		{
 			FlxG.watch.addQuick('rep rpesses',repPresses);
@@ -3838,22 +3827,28 @@ class PlayState extends MusicBeatState
 		#end
 
 		switch (SONG.song.toLowerCase()) {
-<<<<<<< Updated upstream
-			case 'change':
-=======
 			case 'unchangeable':
->>>>>>> Stashed changes
 				switch (curBeat) {
-					case 4:
+					case 202:
 						useRegularCamera = false;
 						camFollow.y = 510;
 						camFollow.x = 780;
+						speen.visible = true;
+						speen.setPosition(dad.x - 340, dad.y - 630);
+						speen.animation.play('thething');
+						dad.visible = false;
+						boyfriend.visible = false;
+						new FlxTimer().start(0.7, function(tmr:FlxTimer)
+						{
+							gf.playAnim('spinel', true);
+						});
 						FlxTween.tween(camFollow, {y: -8000}, 1, {
 							ease: FlxEase.quadInOut,
 							onComplete: function(twn:FlxTween)
 							{
 								remove(dad);
-								dad = new Character(0, -10000, 'spinel-fall');
+								dad.visible = true;
+								dad = new Character(-100, -10000, 'spinel-fall');
 								add(dad);
 								FlxTween.tween(dad, {y: -8300}, 0.4, {
 									startDelay: 1,
@@ -3862,13 +3857,14 @@ class PlayState extends MusicBeatState
 									}
 								});
 								remove(boyfriend);
+								boyfriend.visible = true;
 								boyfriend = new Boyfriend(1040, -10000, 'bf-fail');
 								add(boyfriend);
 								FlxTween.tween(boyfriend, {y: -8200}, 0.4, {
 									startDelay: 1
 								});
 							},
-							startDelay: 1
+							startDelay: 3.4
 						});
 				}
 		}
@@ -4000,4 +3996,22 @@ class PlayState extends MusicBeatState
 	}
 
 	var curLight:Int = 0;
+}
+
+class SpinelThing extends FlxSprite 
+{
+	public function new(x:Float, y:Float)
+	{
+		super(x, y);
+	}
+
+	override function update(elapsed:Float) {
+		
+		super.update(elapsed);
+
+		if (animation.curAnim != null) { 
+			if (animation.curAnim.finished)
+				visible = false;
+		}
+	}
 }
