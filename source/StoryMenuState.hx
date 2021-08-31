@@ -278,16 +278,17 @@ class StoryMenuState extends MusicBeatState
 			}
 
 			PlayState.storyDifficulty = curDifficulty;
-			switch (StringTools.replace(PlayState.storyPlaylist[0]," ", "-").toLowerCase()) {
+			/*switch (StringTools.replace(PlayState.storyPlaylist[0]," ", "-").toLowerCase()) {
 				case 'other-friends':
 					PlayState.playCutscene = true;
-			}
+			}*/
 			PlayState.SONG = Song.loadFromJson(StringTools.replace(PlayState.storyPlaylist[0]," ", "-").toLowerCase() + diffic, StringTools.replace(PlayState.storyPlaylist[0]," ", "-").toLowerCase());
 			PlayState.storyWeek = curWeek;
 			PlayState.campaignScore = 0;
 			new FlxTimer().start(1, function(tmr:FlxTimer)
 			{
-				LoadingState.loadAndSwitchState(new PlayState(), true);
+				LoadingState.loadAndSwitchState(new VideoState("assets/videos/FINAL_CUTSCENE_ONE.webm", new PlayState()), true);
+				//LoadingState.loadAndSwitchState(new PlayState(), true);
 			});
 		}
 	}
