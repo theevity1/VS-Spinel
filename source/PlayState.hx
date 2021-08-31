@@ -937,6 +937,16 @@ class PlayState extends MusicBeatState
 					bg14.scrollFactor.set(0.9, 0.9);
 					bg14.setGraphicSize(Std.int(bg14.width * 0.62));
 					add(bg14);
+
+					var bg15:FlxSprite = new FlxSprite(-1000, -500);
+					bg15.frames = Paths.getSparrowAtlas("spinel/BG/bonus/glow", "shared");
+					bg15.animation.addByPrefix("dance", "glow", 9, true); 
+					bg15.animation.play("dance");
+					bg15.updateHitbox();
+					bg15.antialiasing = true;
+					bg15.scrollFactor.set(0.9, 0.9);
+					bg15.setGraphicSize(Std.int(bg15.width * 0.80));
+					add(bg15);
 				}
 			case 'stage':
 				{
