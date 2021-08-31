@@ -50,13 +50,16 @@ class DialogueBox extends FlxSpriteGroup
 		super();
 
 		// Dialogue song stuff
-		switch (PlayState.SONG.song.toLowerCase())
+		if (PlayState.isStoryMode)
 		{
-			case 'other friends':
-				music = new FlxSound().loadEmbedded(Paths.music('CUTSCENE_1', 'shared'), true, true);
-				music.volume = 0;
-				music.fadeIn(1, 0, 0.75);
-				FlxG.sound.list.add(music);
+			switch (PlayState.SONG.song.toLowerCase())
+			{
+				case 'other friends':
+					music = new FlxSound().loadEmbedded(Paths.music('CUTSCENE_1', 'shared'), true, true);
+					music.volume = 0;
+					music.fadeIn(1, 0, 0.75);
+					FlxG.sound.list.add(music);
+			}
 		}
 
 		bgFade = new FlxSprite(-200, -200).makeGraphic(Std.int(FlxG.width * 1.3), Std.int(FlxG.height * 1.3), 0xFFB3DFd8);
