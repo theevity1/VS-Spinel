@@ -54,7 +54,7 @@ class DialogueBox extends FlxSpriteGroup
 		{
 			switch (PlayState.SONG.song.toLowerCase())
 			{
-				case 'other friends':
+				case 'other friends', 'unchangeable':
 					music = new FlxSound().loadEmbedded(Paths.music('CUTSCENE_1', 'shared'), true, true);
 					music.volume = 0;
 					music.fadeIn(1, 0, 0.75);
@@ -84,6 +84,12 @@ class DialogueBox extends FlxSpriteGroup
 				box.frames = Paths.getSparrowAtlas('spinel/box');
 				box.animation.addByPrefix('normalOpen', 'Speech Bubble Normal Open', 24, false);
 				box.animation.addByIndices('normal', 'speech bubble normal', [4], "", 24, true);
+
+			case 'unchangeable':
+				hasDialog = true;
+				box.frames = Paths.getSparrowAtlas('spinel/box');
+				box.animation.addByPrefix('normalOpen', 'Speech Bubble Normal Open', 24, false);
+				box.animation.addByIndices('normal', 'speech bubble normal', [4], "", 24, true);
 		}
 
 		this.dialogueList = dialogueList;
@@ -103,6 +109,18 @@ class DialogueBox extends FlxSpriteGroup
 			add(portraitLeft);
 			portraitLeft.visible = false;
 		}
+
+		if (PlayState.SONG.song.toLowerCase().replace(' ','-') == 'unchangeable')
+			{
+				portraitLeft = new FlxSprite(-35, -67);
+				portraitLeft.frames = Paths.getSparrowAtlas('spinel/portraits/stunned');
+				portraitLeft.animation.addByPrefix('damn', 'stunned', 24, false);
+				portraitLeft.setGraphicSize(Std.int(portraitLeft.width * 0.88));
+				portraitLeft.scrollFactor.set();
+				portraitLeft.antialiasing = true;
+				add(portraitLeft);
+				portraitLeft.visible = false;
+			}
 
 		portraitRight = new FlxSprite(875, 170);
 		portraitRight.frames = Paths.getSparrowAtlas('spinel/portraits/bf_sprite_dialogue');
@@ -343,6 +361,18 @@ class DialogueBox extends FlxSpriteGroup
 					box.flipX = true;
 					portraitLeft.visible = true;
 					portraitLeft.animation.play('smug');
+				}
+			case 'woah':
+				portraitRight.visible = false;
+				gfPortrait.visible = false;
+				bfPortrait.visible = false;
+				spinelPortrait.visible = false;
+				spineldifPortrait.visible = false;
+				if (!portraitLeft.visible)
+				{
+					box.flipX = true;
+					portraitLeft.visible = true;
+					portraitLeft.animation.play('damn');
 				}
 			case 'spinelrage':
 				portraitRight.visible = false;
