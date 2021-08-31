@@ -40,6 +40,7 @@ class DialogueBox extends FlxSpriteGroup
 
 	var handSelect:FlxSprite;
 	var bgFade:FlxSprite;
+	var music:FlxSound;
 	var SkipThisShit:FlxText;
 
 	var dialogueSound:FlxSound;
@@ -47,6 +48,16 @@ class DialogueBox extends FlxSpriteGroup
 	public function new(talkingRight:Bool = true, ?dialogueList:Array<String>)
 	{
 		super();
+
+		// Dialogue song stuff
+		switch (PlayState.SONG.song.toLowerCase())
+		{
+			case 'other friends':
+				music = new FlxSound().loadEmbedded(Paths.music('CUTSCENE_1', 'shared'), true, true);
+				music.volume = 0;
+				music.fadeIn(1, 0, 0.75);
+				FlxG.sound.list.add(music);
+		}
 
 		bgFade = new FlxSprite(-200, -200).makeGraphic(Std.int(FlxG.width * 1.3), Std.int(FlxG.height * 1.3), 0xFFB3DFd8);
 		bgFade.scrollFactor.set();
@@ -198,6 +209,7 @@ class DialogueBox extends FlxSpriteGroup
 				remove(dialogue);
 				remove(SkipThisShit);
 				dialogueSound.stop();
+				music.fadeOut(2.2, 0);
 				isEnding = true;
 	
 				new FlxTimer().start(0.2, function(tmr:FlxTimer)
@@ -237,6 +249,7 @@ class DialogueBox extends FlxSpriteGroup
 				{
 					isEnding = true;
 					remove(SkipThisShit);
+					music.fadeOut(2.2, 0);
 					dialogueSound.stop();
 					
 					new FlxTimer().start(0.2, function(tmr:FlxTimer)
