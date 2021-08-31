@@ -62,7 +62,7 @@ class Character extends FlxSprite
 
 				playAnim('danceRight');
 
-				case 'gf-su':
+			case 'gf-su':
 				tex = Paths.getSparrowAtlas('spinel/assets/GF_ass_sets_Change');
 				frames = tex;
 				animation.addByPrefix('cheer', 'GF Cheer', 24, false);
@@ -76,7 +76,7 @@ class Character extends FlxSprite
 				animation.addByIndices('hairBlow', "GF Dancing Beat Hair blowing", [0, 1, 2, 3], "", 24);
 				animation.addByIndices('hairFall', "GF Dancing Beat Hair Landing", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], "", 24, false);
 				animation.addByPrefix('scared', 'GF FEAR', 24);
-
+				animation.addByPrefix('spinel', 'gf_midfight reactoin', 24);
 				addOffset('cheer');
 				addOffset('sad', -2, -2);
 				addOffset('danceLeft', 0, -9);
@@ -90,10 +90,11 @@ class Character extends FlxSprite
 				addOffset('hairFall', 0, -9);
 
 				addOffset('scared', -2, -17);
+				addOffset('spinel', -2, -17);
 
 				playAnim('danceRight');
 				
-				case 'gf-bonus':
+			case 'gf-bonus':
 				tex = Paths.getSparrowAtlas('spinel/assets/gf_bonus_song');
 				frames = tex;
 				animation.addByPrefix('cheer', 'GF Cheer', 24, false);
@@ -803,7 +804,7 @@ class Character extends FlxSprite
 			switch (curCharacter)
 			{
 				case 'gf':
-					if (!animation.curAnim.name.startsWith('hair'))
+					if (!animation.curAnim.name.startsWith('hair') && !animation.curAnim.name.startsWith('spinel'))
 					{
 						danced = !danced;
 
@@ -814,7 +815,7 @@ class Character extends FlxSprite
 					}
 
 				case 'gf-su':
-				if (!animation.curAnim.name.startsWith('hair'))
+				if (!animation.curAnim.name.startsWith('hair') && !animation.curAnim.name.startsWith('spinel'))
 				{
 					danced = !danced;
 

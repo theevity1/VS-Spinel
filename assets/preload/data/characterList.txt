@@ -6,3 +6,4 @@ Spinel
 Spinel-su
 Spinel-bonus
 spinel-fall
+gf-su
