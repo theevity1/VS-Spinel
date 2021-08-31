@@ -685,7 +685,7 @@ class PlayState extends MusicBeatState
 				{
 						defaultCamZoom = 0.50;
 						curStage = 'field';
-						var bg:FlxSprite = new FlxSprite(-1280, -770).loadGraphic(Paths.image('spinel/BG/first/SKY'));
+						var bg:FlxSprite = new FlxSprite(-1280, -770).loadGraphic(Paths.image('spinel/BG/first/sky'));
                         bg.antialiasing = true;
                         bg.scrollFactor.set(0.9, 0.9);
                         bg.active = false;
@@ -708,7 +708,7 @@ class PlayState extends MusicBeatState
                         add(bg3);
 
 						var bg4:FlxSprite = new FlxSprite(-1800, 390);
-                        bg4.frames = Paths.getSparrowAtlas("spinel/BG/first/FLOOR", "shared");
+                        bg4.frames = Paths.getSparrowAtlas("spinel/BG/first/floor", "shared");
                         bg4.animation.addByPrefix("calm", "GRASS", 24, true); 
                         bg4.animation.play("calm");
 						bg4.updateHitbox();
@@ -718,7 +718,7 @@ class PlayState extends MusicBeatState
                         add(bg4);
 
 						var bg5:FlxSprite = new FlxSprite(-1000, -995);
-                        bg5.frames = Paths.getSparrowAtlas("spinel/BG/first/INJECTOR", "shared");
+                        bg5.frames = Paths.getSparrowAtlas("spinel/BG/first/injector", "shared");
                         bg5.animation.addByPrefix("spin", "BIGINJECTOR", 24, true); 
                         bg5.animation.play("spin");
                         bg5.antialiasing = true;
