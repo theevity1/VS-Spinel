@@ -2914,7 +2914,7 @@ class PlayState extends MusicBeatState
 					{
 						PlayState.SONG = Song.loadFromJson(nextSongLowercase + difficulty, PlayState.storyPlaylist[0]);
 						switch (nextSongLowercase) {
-							case 'Injector Carousel':
+							case 'injector-carousel':
 								LoadingState.loadAndSwitchState(new VideoState("assets/videos/cutscene_2_final.webm", new PlayState()));
 							default:
 								LoadingState.loadAndSwitchState(new PlayState());
