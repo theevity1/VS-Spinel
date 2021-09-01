@@ -44,6 +44,9 @@ class FreeplayState extends MusicBeatState
 			var data:Array<String> = initSonglist[i].split(':');
 			songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1]));
 		}
+		if (FlxG.save.data.beatSpinel) {
+			songs.push(new SongMetadata('apocalypse party', 3, 'Spinel'));
+		}
 
 		/* 
 			if (FlxG.sound.music != null)

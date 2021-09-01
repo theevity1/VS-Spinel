@@ -81,6 +81,9 @@ class KadeEngineData
 		if (FlxG.save.data.customStrumLine == null)
 			FlxG.save.data.customStrumLine = 0;
 
+		if (FlxG.save.data.beatSpinel == null)
+			FlxG.save.data.beatSpinel = false;
+
 		Conductor.recalculateTimings();
 		PlayerSettings.player1.controls.loadKeyBinds();
 		KeyBinds.keyCheck();

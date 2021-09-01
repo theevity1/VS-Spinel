@@ -1339,7 +1339,7 @@ class PlayState extends MusicBeatState
 						camFollow.x += 200;
 						FlxG.camera.focusOn(camFollow.getPosition());
 						FlxG.camera.zoom = 1.5;
-
+						
 						new FlxTimer().start(0.8, function(tmr:FlxTimer)
 						{
 							camHUD.visible = true;
@@ -2862,7 +2862,14 @@ class PlayState extends MusicBeatState
 					transIn = FlxTransitionableState.defaultTransIn;
 					transOut = FlxTransitionableState.defaultTransOut;
 
-					FlxG.switchState(new StoryMenuState());
+					switch (SONG.song.toLowerCase()) {
+						case 'unchangeable':
+							FlxG.save.data.beatSpinel = true;
+							LoadingState.loadAndSwitchState(new VideoState("assets/videos/spinel credits sequence update.webm", new StoryMenuState()));
+						default:
+							FlxG.switchState(new StoryMenuState());
+					}
+					
 
 					#if windows
 					if (luaModchart != null)
@@ -3444,17 +3451,40 @@ class PlayState extends MusicBeatState
 				{
 					if (pressArray[spr.ID] && spr.animation.curAnim.name != 'confirm')
 						spr.animation.play('pressed');
-					if (!holdArray[spr.ID])
+					if (!holdArray[spr.ID]) {
+						
 						spr.animation.play('static');
+					}
 		 
 					if (spr.animation.curAnim.name == 'confirm' && !curStage.startsWith('school'))
 					{
 						spr.centerOffsets();
-						spr.offset.x -= 7;
-						spr.offset.y -= 7;
+						spr.offset.x -= 10;
+						spr.offset.y -= 10;
+						if (spr.ID == 1) {
+							spr.offset.x -= 4;
+							spr.offset.y -= 2.5;
+						}
+
 					}
-					else
+					else if (spr.animation.curAnim.name == 'pressed' && !curStage.startsWith('school')) {
 						spr.centerOffsets();
+						switch (spr.ID) {
+							case 2:
+								//spr.offset.x -= 2;
+								spr.offset.y -= 1;
+							case 1:
+								spr.offset.x -= 1;
+							case 0:
+								spr.offset.y += 1;
+							case 3:
+								spr.offset.x += 1;
+								spr.offset.y -= 1;
+						}
+						
+					} else {
+						spr.centerOffsets();
+					}
 				});
 			}
 
@@ -3863,7 +3893,7 @@ class PlayState extends MusicBeatState
 		switch (SONG.song.toLowerCase()) {
 			case 'unchangeable':
 				switch (curBeat) {
-					case 2://202
+					case 202://202
 						useRegularCamera = false;
 						camFollow.y = 510;
 						camFollow.x = 780;

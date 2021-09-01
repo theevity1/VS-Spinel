@@ -87,6 +87,13 @@ class MainMenuState extends MusicBeatState
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
 
+		var trophy = new FlxSprite(FlxG.width, FlxG.height).loadGraphic(Paths.image('spinel/trophy', 'shared'));
+		trophy.x -= trophy.width + 30;
+		trophy.y -= trophy.height - 30;
+		trophy.scrollFactor.set(0, 0);
+		if (FlxG.save.data.beatSpinel) {
+			add(trophy);
+		}
 		var tex = Paths.getSparrowAtlas('FNF_main_menu_assets');
 
 		for (i in 0...optionShit.length)
