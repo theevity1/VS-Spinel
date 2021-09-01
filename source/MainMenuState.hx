@@ -174,6 +174,7 @@ class MainMenuState extends MusicBeatState
 				{
 					fancyOpenURL("https://www.redbubble.com/people/KittenSneeze/shop?asc=u");
 					fancyOpenURL("https://ko-fi.com/kittensneeze");
+					fancyOpenURL("https://www.patreon.com/TheKittenSneeze");
 				}
 				else
 				{
