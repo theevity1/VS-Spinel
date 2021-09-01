@@ -850,7 +850,7 @@ class PlayState extends MusicBeatState
 					bg3.setGraphicSize(Std.int(bg3.width * 0.70));
 					add(bg3);
 					
-					var bg4:FlxSprite = new FlxSprite(-942, -111).loadGraphic(Paths.image('spinel/BG/bonus/wall'));
+					var bg4:FlxSprite = new FlxSprite(-942, -101).loadGraphic(Paths.image('spinel/BG/bonus/wall'));
 					bg4.antialiasing = true;
 					bg4.scrollFactor.set(0.9, 0.9);
 					bg4.active = false;
@@ -1069,7 +1069,7 @@ class PlayState extends MusicBeatState
 				dad.y += 100;
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case 'Spinel-bonus':
-				camPos.set(dad.getGraphicMidpoint().x + 600, dad.getGraphicMidpoint().y + 800);
+				camPos.set(dad.getGraphicMidpoint().x + 780, dad.getGraphicMidpoint().y + 800);
 		}
 
 
