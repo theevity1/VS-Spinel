@@ -172,7 +172,8 @@ class MainMenuState extends MusicBeatState
 			{
 				if (optionShit[curSelected] == 'donate')
 				{
-					fancyOpenURL("https://www.kickstarter.com/projects/funkin/friday-night-funkin-the-full-ass-game");
+					fancyOpenURL("https://www.redbubble.com/people/KittenSneeze/shop?asc=u");
+					fancyOpenURL("https://ko-fi.com/kittensneeze");
 				}
 				else
 				{
