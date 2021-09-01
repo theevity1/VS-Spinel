@@ -2702,8 +2702,12 @@ class PlayState extends MusicBeatState
 								if (spr.animation.curAnim.name == 'confirm' && !curStage.startsWith('school'))
 								{
 									spr.centerOffsets();
-									spr.offset.x -= 13;
-									spr.offset.y -= 13;
+									spr.offset.x -= 10;
+									spr.offset.y -= 10;
+									if (spr.ID == 1) {
+										spr.offset.x -= 4;
+										spr.offset.y -= 2.5;
+									}
 								}
 								else
 									spr.centerOffsets();
