@@ -229,12 +229,12 @@ class Character extends FlxSprite
 			animation.addByPrefix('idle', 'idle', 24);
 			animation.addByPrefix('singUP', 'up', 24, false);
 			animation.addByPrefix('singRIGHT', 'right', 24, false);
-			animation.addByPrefix('singDOWN', 'downagain', 24, false);
-			animation.addByPrefix('singLEFT', 'leftagain', 24, false);
+			animation.addByPrefix('singDOWN', 'down', 24, false);
+			animation.addByPrefix('singLEFT', 'left', 24, false);
 
 			addOffset('idle', 0, 190);
-			addOffset("singUP", -36, 352);
-			addOffset("singRIGHT", -130, 78);
+			addOffset("singUP", -36, 315);
+			addOffset("singRIGHT", -130, 41);
 			addOffset("singLEFT", 79, 123);
 			addOffset("singDOWN", -159, -269);
 
@@ -470,16 +470,16 @@ class Character extends FlxSprite
 
 			trace(tex.frames.length);
 
-			animation.addByPrefix('idle', 'BF idle dance0', 24, false);
-			animation.addByPrefix('singUP', 'BF NOTE UP0', 24, false);
-			animation.addByPrefix('singLEFT', 'BF NOTE LEFT0', 24, false);
-			animation.addByPrefix('singRIGHT', 'BF NOTE RIGHT0', 24, false);
-			animation.addByPrefix('singDOWN', 'BF NOTE DOWN0', 24, false);
-			animation.addByPrefix('singUPmiss', 'BF NOTE UP MISS', 24, false);
-			animation.addByPrefix('singLEFTmiss', 'BF NOTE LEFT MISS', 24, false);
-			animation.addByPrefix('singRIGHTmiss', 'BF NOTE RIGHT MISS', 24, false);
-			animation.addByPrefix('singDOWNmiss', 'BF NOTE DOWN MISS', 24, false);
-			animation.addByPrefix('hey', 'BF HEY', 24, false);
+			animation.addByPrefix('idle', 'idle0', 24, false);
+			animation.addByPrefix('singUP', 'up0', 24, false);
+			animation.addByPrefix('singLEFT', 'left0', 24, false);
+			animation.addByPrefix('singRIGHT', 'right0', 24, false);
+			animation.addByPrefix('singDOWN', 'down0', 24, false);
+			animation.addByPrefix('singUPmiss', 'up miss', 24, false);
+			animation.addByPrefix('singLEFTmiss', 'left miss', 24, false);
+			animation.addByPrefix('singRIGHTmiss', 'right miss', 24, false);
+			animation.addByPrefix('singDOWNmiss', 'down miss', 24, false);
+			animation.addByPrefix('hey', 'hey', 24, false);
 
 			animation.addByPrefix('firstDeath', "BF dies", 24, false);
 			animation.addByPrefix('deathLoop', "BF Dead Loop", 24, true);

@@ -40,6 +40,7 @@ class DialogueBox extends FlxSpriteGroup
 
 	var handSelect:FlxSprite;
 	var bgFade:FlxSprite;
+	var music:FlxSound;
 	var SkipThisShit:FlxText;
 
 	var dialogueSound:FlxSound;
@@ -47,6 +48,19 @@ class DialogueBox extends FlxSpriteGroup
 	public function new(talkingRight:Bool = true, ?dialogueList:Array<String>)
 	{
 		super();
+
+		// Dialogue song stuff
+		if (PlayState.isStoryMode)
+		{
+			switch (PlayState.SONG.song.toLowerCase())
+			{
+				case 'other friends', 'unchangeable':
+					music = new FlxSound().loadEmbedded(Paths.music('CUTSCENE_1', 'shared'), true, true);
+					music.volume = 0;
+					music.fadeIn(1, 0, 0.75);
+					FlxG.sound.list.add(music);
+			}
+		}
 
 		bgFade = new FlxSprite(-200, -200).makeGraphic(Std.int(FlxG.width * 1.3), Std.int(FlxG.height * 1.3), 0xFFB3DFd8);
 		bgFade.scrollFactor.set();
@@ -63,10 +77,16 @@ class DialogueBox extends FlxSpriteGroup
 		box = new FlxSprite(50, 350);
 		
 		var hasDialog = false;
-		switch (PlayState.SONG.song.toLowerCase())
+		switch (PlayState.SONG.song.toLowerCase().replace(' ','-'))
 		{
 			case 'other-friends':
-				hasDialog = false;
+				hasDialog = true;
+				box.frames = Paths.getSparrowAtlas('spinel/box');
+				box.animation.addByPrefix('normalOpen', 'Speech Bubble Normal Open', 24, false);
+				box.animation.addByIndices('normal', 'speech bubble normal', [4], "", 24, true);
+
+			case 'unchangeable':
+				hasDialog = true;
 				box.frames = Paths.getSparrowAtlas('spinel/box');
 				box.animation.addByPrefix('normalOpen', 'Speech Bubble Normal Open', 24, false);
 				box.animation.addByIndices('normal', 'speech bubble normal', [4], "", 24, true);
@@ -77,7 +97,7 @@ class DialogueBox extends FlxSpriteGroup
 		if (!hasDialog)
 			return;
 
-		if (PlayState.SONG.song.toLowerCase() == 'other-friends')
+		if (PlayState.SONG.song.toLowerCase().replace(' ','-') == 'other-friends')
 		{
 			portraitLeft = new FlxSprite(-35, -67);
 			portraitLeft.frames = Paths.getSparrowAtlas('spinel/portraits/spinelspritedialogue');
@@ -90,7 +110,19 @@ class DialogueBox extends FlxSpriteGroup
 			portraitLeft.visible = false;
 		}
 
-		portraitRight = new FlxSprite(800, 170);
+		if (PlayState.SONG.song.toLowerCase().replace(' ','-') == 'unchangeable')
+			{
+				portraitLeft = new FlxSprite(-35, -67);
+				portraitLeft.frames = Paths.getSparrowAtlas('spinel/portraits/stunned');
+				portraitLeft.animation.addByPrefix('damn', 'stunned', 24, false);
+				portraitLeft.setGraphicSize(Std.int(portraitLeft.width * 0.88));
+				portraitLeft.scrollFactor.set();
+				portraitLeft.antialiasing = true;
+				add(portraitLeft);
+				portraitLeft.visible = false;
+			}
+
+		portraitRight = new FlxSprite(875, 170);
 		portraitRight.frames = Paths.getSparrowAtlas('spinel/portraits/bf_sprite_dialogue');
 		portraitRight.animation.addByPrefix('yes', 'yes', 24, false);
 		portraitRight.animation.addByPrefix('excited', 'excited', 24, false);
@@ -113,7 +145,7 @@ class DialogueBox extends FlxSpriteGroup
 		add(gfPortrait);
 		gfPortrait.visible = false;
 
-		bfPortrait = new FlxSprite(800, 170);
+		bfPortrait = new FlxSprite(875, 150);
 		bfPortrait.frames = Paths.getSparrowAtlas('spinel/portraits/bf_sprite_dialogue');
 		bfPortrait.animation.addByPrefix('shocked', 'shocked', 24, false);
 		bfPortrait.animation.addByPrefix('worried', 'worried', 24, false);
@@ -198,6 +230,7 @@ class DialogueBox extends FlxSpriteGroup
 				remove(dialogue);
 				remove(SkipThisShit);
 				dialogueSound.stop();
+				music.fadeOut(2.2, 0);
 				isEnding = true;
 	
 				new FlxTimer().start(0.2, function(tmr:FlxTimer)
@@ -237,6 +270,7 @@ class DialogueBox extends FlxSpriteGroup
 				{
 					isEnding = true;
 					remove(SkipThisShit);
+					music.fadeOut(2.2, 0);
 					dialogueSound.stop();
 					
 					new FlxTimer().start(0.2, function(tmr:FlxTimer)
@@ -298,8 +332,9 @@ class DialogueBox extends FlxSpriteGroup
 				bfPortrait.visible = false;
 				spinelPortrait.visible = false;
 				spineldifPortrait.visible = false;
-				if (!portraitLeft.visible)
+				if (!gfPortrait.visible)
 				{
+					box.flipX = false;
 					gfPortrait.visible = true;
 					gfPortrait.animation.play('normal');
 				}
@@ -309,8 +344,9 @@ class DialogueBox extends FlxSpriteGroup
 				bfPortrait.visible = false;
 				spinelPortrait.visible = false;
 				spineldifPortrait.visible = false;
-				if (!portraitLeft.visible)
+				if (!gfPortrait.visible)
 				{
+					box.flipX = false;
 					gfPortrait.visible = true;
 					gfPortrait.animation.play('upset');
 				}
@@ -322,10 +358,11 @@ class DialogueBox extends FlxSpriteGroup
 				spineldifPortrait.visible = false;
 				if (!portraitLeft.visible)
 				{
+					box.flipX = true;
 					portraitLeft.visible = true;
 					portraitLeft.animation.play('smug');
 				}
-			case 'spinelrage':
+			case 'woah':
 				portraitRight.visible = false;
 				gfPortrait.visible = false;
 				bfPortrait.visible = false;
@@ -333,6 +370,19 @@ class DialogueBox extends FlxSpriteGroup
 				spineldifPortrait.visible = false;
 				if (!portraitLeft.visible)
 				{
+					box.flipX = true;
+					portraitLeft.visible = true;
+					portraitLeft.animation.play('damn');
+				}
+			case 'spinelrage':
+				portraitRight.visible = false;
+				gfPortrait.visible = false;
+				bfPortrait.visible = false;
+				spinelPortrait.visible = false;
+				spineldifPortrait.visible = false;
+				if (!spineldifPortrait.visible)
+				{
+					box.flipX = true;
 					spineldifPortrait.visible = true;
 					spineldifPortrait.animation.play('angry');
 				}
@@ -341,8 +391,9 @@ class DialogueBox extends FlxSpriteGroup
 				gfPortrait.visible = false;
 				bfPortrait.visible = false;
 				spineldifPortrait.visible = false;
-				if (!portraitLeft.visible)
+				if (!spinelPortrait.visible)
 				{
+					box.flipX = true;
 					spinelPortrait.visible = true;
 					spinelPortrait.animation.play('meh');
 				}
@@ -351,8 +402,9 @@ class DialogueBox extends FlxSpriteGroup
 				portraitLeft.visible = false;
 				spinelPortrait.visible = false;
 				spineldifPortrait.visible = false;
-				if (!portraitRight.visible)
+				if (!bfPortrait.visible)
 				{
+					box.flipX = false;
 					bfPortrait.visible = true;
 					bfPortrait.animation.play('shocked');
 				}
@@ -361,8 +413,9 @@ class DialogueBox extends FlxSpriteGroup
 				portraitLeft.visible = false;
 				spinelPortrait.visible = false;
 				spineldifPortrait.visible = false;
-				if (!portraitRight.visible)
+				if (!bfPortrait.visible)
 				{
+					box.flipX = false;
 					bfPortrait.visible = true;
 					bfPortrait.animation.play('worried');
 				}
@@ -374,6 +427,7 @@ class DialogueBox extends FlxSpriteGroup
 				spineldifPortrait.visible = false;
 				if (!portraitRight.visible)
 				{
+					box.flipX = false;
 					portraitRight.visible = true;
 					portraitRight.animation.play('excited');
 				}
@@ -385,6 +439,7 @@ class DialogueBox extends FlxSpriteGroup
 				spineldifPortrait.visible = false;
 				if (!portraitRight.visible)
 				{
+					box.flipX = false;
 					portraitRight.visible = true;
 					portraitRight.animation.play('yes');
 				}
@@ -396,6 +451,7 @@ class DialogueBox extends FlxSpriteGroup
 				spineldifPortrait.visible = false;
 				if (!portraitRight.visible)
 				{
+					box.flipX = false;
 					portraitRight.visible = true;
 					portraitRight.animation.play('sarcasm');
 				}

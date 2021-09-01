@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="BONSU_SONG_BGv1.png">
+	<!-- Created with Adobe Animate version 21.0.0.35450 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="glow0000" x="0" y="0" width="4678" height="2569"/>
+	<SubTexture name="glow0001" x="0" y="2574" width="4678" height="2569"/>
+	<SubTexture name="glow0002" x="0" y="5148" width="4678" height="2569"/>
+	<SubTexture name="glow0008" x="0" y="5148" width="4678" height="2569"/>
+	<SubTexture name="glow0009" x="0" y="2574" width="4678" height="2569"/>
+	<SubTexture name="glow0010" x="0" y="0" width="4678" height="2569"/>
+</TextureAtlas>
