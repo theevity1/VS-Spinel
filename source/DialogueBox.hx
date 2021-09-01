@@ -83,13 +83,17 @@ class DialogueBox extends FlxSpriteGroup
 				hasDialog = true;
 				box.frames = Paths.getSparrowAtlas('spinel/box');
 				box.animation.addByPrefix('normalOpen', 'Speech Bubble Normal Open', 24, false);
+				box.animation.addByPrefix('loudOpen', 'speech bubble loud open', 24, false);
 				box.animation.addByIndices('normal', 'speech bubble normal', [4], "", 24, true);
+				box.animation.addByIndices('loud', 'AHH speech bubble', [4], "", 24, true);
 
 			case 'unchangeable':
 				hasDialog = true;
 				box.frames = Paths.getSparrowAtlas('spinel/box');
 				box.animation.addByPrefix('normalOpen', 'Speech Bubble Normal Open', 24, false);
+				box.animation.addByPrefix('loudOpen', 'speech bubble loud open', 24, false);
 				box.animation.addByIndices('normal', 'speech bubble normal', [4], "", 24, true);
+				box.animation.addByIndices('loud', 'AHH speech bubble', [4], "", 24, true);
 		}
 
 		this.dialogueList = dialogueList;
@@ -148,7 +152,7 @@ class DialogueBox extends FlxSpriteGroup
 		bfPortrait = new FlxSprite(875, 150);
 		bfPortrait.frames = Paths.getSparrowAtlas('spinel/portraits/bf_sprite_dialogue');
 		bfPortrait.animation.addByPrefix('shocked', 'shocked', 24, false);
-		bfPortrait.animation.addByPrefix('worried', 'worried', 24, false);
+		bfPortrait.animation.addByPrefix('worried', 'worried0', 24, false);
 		bfPortrait.updateHitbox();
 		bfPortrait.setGraphicSize(Std.int(bfPortrait.width * 0.9));
 		bfPortrait.antialiasing = true;
@@ -215,6 +219,11 @@ class DialogueBox extends FlxSpriteGroup
 				box.animation.play('normal');
 				dialogueOpened = true;
 			}
+			else if (box.animation.curAnim.name == 'loudOpen' && box.animation.curAnim.finished)
+				{
+					box.animation.play('loud');
+					dialogueOpened = true;
+				}
 		}
 
 		if (dialogueOpened && !dialogueStarted)
@@ -332,6 +341,7 @@ class DialogueBox extends FlxSpriteGroup
 				bfPortrait.visible = false;
 				spinelPortrait.visible = false;
 				spineldifPortrait.visible = false;
+				box.animation.play('normalOpen');
 				if (!gfPortrait.visible)
 				{
 					box.flipX = false;
@@ -344,6 +354,7 @@ class DialogueBox extends FlxSpriteGroup
 				bfPortrait.visible = false;
 				spinelPortrait.visible = false;
 				spineldifPortrait.visible = false;
+				box.animation.play('normalOpen');
 				if (!gfPortrait.visible)
 				{
 					box.flipX = false;
@@ -356,6 +367,7 @@ class DialogueBox extends FlxSpriteGroup
 				bfPortrait.visible = false;
 				spinelPortrait.visible = false;
 				spineldifPortrait.visible = false;
+				box.animation.play('normalOpen');
 				if (!portraitLeft.visible)
 				{
 					box.flipX = true;
@@ -368,6 +380,7 @@ class DialogueBox extends FlxSpriteGroup
 				bfPortrait.visible = false;
 				spinelPortrait.visible = false;
 				spineldifPortrait.visible = false;
+				box.animation.play('normalOpen');
 				if (!portraitLeft.visible)
 				{
 					box.flipX = true;
@@ -380,6 +393,7 @@ class DialogueBox extends FlxSpriteGroup
 				bfPortrait.visible = false;
 				spinelPortrait.visible = false;
 				spineldifPortrait.visible = false;
+				box.animation.play('loudOpen');
 				if (!spineldifPortrait.visible)
 				{
 					box.flipX = true;
@@ -391,6 +405,7 @@ class DialogueBox extends FlxSpriteGroup
 				gfPortrait.visible = false;
 				bfPortrait.visible = false;
 				spineldifPortrait.visible = false;
+				box.animation.play('normalOpen');
 				if (!spinelPortrait.visible)
 				{
 					box.flipX = true;
@@ -402,6 +417,7 @@ class DialogueBox extends FlxSpriteGroup
 				portraitLeft.visible = false;
 				spinelPortrait.visible = false;
 				spineldifPortrait.visible = false;
+				box.animation.play('loudOpen');
 				if (!bfPortrait.visible)
 				{
 					box.flipX = false;
@@ -413,6 +429,7 @@ class DialogueBox extends FlxSpriteGroup
 				portraitLeft.visible = false;
 				spinelPortrait.visible = false;
 				spineldifPortrait.visible = false;
+				box.animation.play('normalOpen');
 				if (!bfPortrait.visible)
 				{
 					box.flipX = false;
@@ -425,6 +442,7 @@ class DialogueBox extends FlxSpriteGroup
 				bfPortrait.visible = false;
 				spinelPortrait.visible = false;
 				spineldifPortrait.visible = false;
+				box.animation.play('normalOpen');
 				if (!portraitRight.visible)
 				{
 					box.flipX = false;
@@ -437,6 +455,7 @@ class DialogueBox extends FlxSpriteGroup
 				bfPortrait.visible = false;
 				spinelPortrait.visible = false;
 				spineldifPortrait.visible = false;
+				box.animation.play('normalOpen');
 				if (!portraitRight.visible)
 				{
 					box.flipX = false;
@@ -449,6 +468,7 @@ class DialogueBox extends FlxSpriteGroup
 				bfPortrait.visible = false;
 				spinelPortrait.visible = false;
 				spineldifPortrait.visible = false;
+				box.animation.play('loudOpen');
 				if (!portraitRight.visible)
 				{
 					box.flipX = false;
