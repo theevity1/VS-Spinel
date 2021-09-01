@@ -341,12 +341,14 @@ class DialogueBox extends FlxSpriteGroup
 				bfPortrait.visible = false;
 				spinelPortrait.visible = false;
 				spineldifPortrait.visible = false;
+				box.scale.set(1, 1);
+				box.setPosition(50, 350);
 				box.animation.play('normalOpen');
+				gfPortrait.animation.play('normal');
 				if (!gfPortrait.visible)
 				{
 					box.flipX = false;
 					gfPortrait.visible = true;
-					gfPortrait.animation.play('normal');
 				}
 			case 'gfdif':
 				portraitRight.visible = false;
@@ -354,12 +356,14 @@ class DialogueBox extends FlxSpriteGroup
 				bfPortrait.visible = false;
 				spinelPortrait.visible = false;
 				spineldifPortrait.visible = false;
+				box.scale.set(1, 1);
+				box.setPosition(50, 350);
 				box.animation.play('normalOpen');
+				gfPortrait.animation.play('upset');
 				if (!gfPortrait.visible)
 				{
 					box.flipX = false;
 					gfPortrait.visible = true;
-					gfPortrait.animation.play('upset');
 				}
 			case 'spinel':
 				portraitRight.visible = false;
@@ -367,12 +371,14 @@ class DialogueBox extends FlxSpriteGroup
 				bfPortrait.visible = false;
 				spinelPortrait.visible = false;
 				spineldifPortrait.visible = false;
+				box.scale.set(1, 1);
+				box.setPosition(50, 350);
 				box.animation.play('normalOpen');
+				portraitLeft.animation.play('smug');
 				if (!portraitLeft.visible)
 				{
 					box.flipX = true;
 					portraitLeft.visible = true;
-					portraitLeft.animation.play('smug');
 				}
 			case 'woah':
 				portraitRight.visible = false;
@@ -380,12 +386,14 @@ class DialogueBox extends FlxSpriteGroup
 				bfPortrait.visible = false;
 				spinelPortrait.visible = false;
 				spineldifPortrait.visible = false;
+				box.scale.set(1, 1);
+				box.setPosition(50, 350);
 				box.animation.play('normalOpen');
+				portraitLeft.animation.play('damn');
 				if (!portraitLeft.visible)
 				{
 					box.flipX = true;
 					portraitLeft.visible = true;
-					portraitLeft.animation.play('damn');
 				}
 			case 'spinelrage':
 				portraitRight.visible = false;
@@ -393,48 +401,56 @@ class DialogueBox extends FlxSpriteGroup
 				bfPortrait.visible = false;
 				spinelPortrait.visible = false;
 				spineldifPortrait.visible = false;
+				box.scale.set(0.8, 0.8);
+				box.setPosition(-50, 263);
 				box.animation.play('loudOpen');
+				spineldifPortrait.animation.play('angry');
 				if (!spineldifPortrait.visible)
 				{
 					box.flipX = true;
 					spineldifPortrait.visible = true;
-					spineldifPortrait.animation.play('angry');
 				}
 			case 'spinellol':
 				portraitRight.visible = false;
 				gfPortrait.visible = false;
 				bfPortrait.visible = false;
 				spineldifPortrait.visible = false;
+				box.scale.set(1, 1);
+				box.setPosition(50, 350);
 				box.animation.play('normalOpen');
+				spinelPortrait.animation.play('meh');
 				if (!spinelPortrait.visible)
 				{
 					box.flipX = true;
 					spinelPortrait.visible = true;
-					spinelPortrait.animation.play('meh');
 				}
 			case 'bf':
 				gfPortrait.visible = false;
 				portraitLeft.visible = false;
 				spinelPortrait.visible = false;
 				spineldifPortrait.visible = false;
+				box.scale.set(0.8, 0.8);
+				box.setPosition(-50, 263);
 				box.animation.play('loudOpen');
+				bfPortrait.animation.play('shocked');
 				if (!bfPortrait.visible)
 				{
 					box.flipX = false;
 					bfPortrait.visible = true;
-					bfPortrait.animation.play('shocked');
 				}
 			case 'bfwor':
 				gfPortrait.visible = false;
 				portraitLeft.visible = false;
 				spinelPortrait.visible = false;
 				spineldifPortrait.visible = false;
+				box.scale.set(1, 1);
+				box.setPosition(50, 350);
 				box.animation.play('normalOpen');
+				bfPortrait.animation.play('worried');
 				if (!bfPortrait.visible)
 				{
 					box.flipX = false;
 					bfPortrait.visible = true;
-					bfPortrait.animation.play('worried');
 				}
 			case 'bfexc':
 				gfPortrait.visible = false;
@@ -442,12 +458,14 @@ class DialogueBox extends FlxSpriteGroup
 				bfPortrait.visible = false;
 				spinelPortrait.visible = false;
 				spineldifPortrait.visible = false;
+				box.scale.set(1, 1);
+				box.setPosition(50, 350);
 				box.animation.play('normalOpen');
+				portraitRight.animation.play('excited');
 				if (!portraitRight.visible)
 				{
 					box.flipX = false;
 					portraitRight.visible = true;
-					portraitRight.animation.play('excited');
 				}
 			case 'bfyes':
 				gfPortrait.visible = false;
@@ -455,12 +473,14 @@ class DialogueBox extends FlxSpriteGroup
 				bfPortrait.visible = false;
 				spinelPortrait.visible = false;
 				spineldifPortrait.visible = false;
+				box.scale.set(1, 1);
+				box.setPosition(50, 350);
 				box.animation.play('normalOpen');
+				portraitRight.animation.play('yes');
 				if (!portraitRight.visible)
 				{
 					box.flipX = false;
 					portraitRight.visible = true;
-					portraitRight.animation.play('yes');
 				}
 			case 'bfsar':
 				gfPortrait.visible = false;
@@ -468,12 +488,14 @@ class DialogueBox extends FlxSpriteGroup
 				bfPortrait.visible = false;
 				spinelPortrait.visible = false;
 				spineldifPortrait.visible = false;
+				box.scale.set(0.8, 0.8);
+				box.setPosition(-50, 263);
 				box.animation.play('loudOpen');
+				portraitRight.animation.play('sarcasm');
 				if (!portraitRight.visible)
 				{
 					box.flipX = false;
 					portraitRight.visible = true;
-					portraitRight.animation.play('sarcasm');
 				}
 		}
 	}
