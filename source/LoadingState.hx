@@ -36,14 +36,12 @@ class LoadingState extends MusicBeatState
 	
 	override function create()
 	{
-		logo = new FlxSprite(-150, -100);
+		/*logo = new FlxSprite(-150, -100);
 		logo.frames = Paths.getSparrowAtlas('logoBumpin');
 		logo.antialiasing = true;
 		logo.animation.addByPrefix('bump', 'logo bumpin', 24);
 		logo.animation.play('bump');
 		logo.updateHitbox();
-		// logoBl.screenCenter();
-		// logoBl.color = FlxColor.BLACK;
 
 		gfDance = new FlxSprite(FlxG.width * 0.4, FlxG.height * 0.07);
 		gfDance.frames = Paths.getSparrowAtlas('gfDanceTitle');
@@ -51,7 +49,11 @@ class LoadingState extends MusicBeatState
 		gfDance.animation.addByIndices('danceRight', 'gfDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
 		gfDance.antialiasing = true;
 		add(gfDance);
-		add(logo);
+		add(logo);*/
+		var BG = new FlxSprite(0, 0).loadGraphic(Paths.image('spinel/loading', 'shared'));
+		BG.scrollFactor.set(0, 0);
+		add(BG);
+
 		
 		initSongsManifest().onComplete
 		(
@@ -108,13 +110,13 @@ class LoadingState extends MusicBeatState
 	{
 		super.beatHit();
 		
-		logo.animation.play('bump');
+		/*logo.animation.play('bump');
 		danceLeft = !danceLeft;
 		
 		if (danceLeft)
 			gfDance.animation.play('danceRight');
 		else
-			gfDance.animation.play('danceLeft');
+			gfDance.animation.play('danceLeft');*/
 	}
 	
 	override function update(elapsed:Float)
