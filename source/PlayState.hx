@@ -101,7 +101,7 @@ class PlayState extends MusicBeatState
 	var detailsText:String = "";
 	var detailsPausedText:String = "";
 	#end
-
+	var theCloud:FlxSprite;
 	private var vocals:FlxSound;
 
 	public static var dad:Character;
@@ -819,6 +819,8 @@ class PlayState extends MusicBeatState
 						add(transStuff);
 						dad = new Character(0, -10000, 'spinel-fall');
 							boyfriend = new Boyfriend(1040, -10000, 'bf-fail');
+
+						theCloud = new FlxSprite(-5000, 0).loadGraphic(Paths.image('spinel/BG/second/theCloud'));
 				}
 			case 'bonus':
 				{
@@ -3434,8 +3436,8 @@ class PlayState extends MusicBeatState
 					if (spr.animation.curAnim.name == 'confirm' && !curStage.startsWith('school'))
 					{
 						spr.centerOffsets();
-						spr.offset.x -= 13;
-						spr.offset.y -= 13;
+						spr.offset.x -= 7;
+						spr.offset.y -= 7;
 					}
 					else
 						spr.centerOffsets();
@@ -3767,6 +3769,24 @@ class PlayState extends MusicBeatState
 			resyncVocals();
 		}
 
+		if (moveSky) {
+			if (FlxG.random.int(0, 16) == 1) {
+				var cloud:FlxSprite = theCloud.clone();
+				cloud.setPosition(FlxG.random.int(-1400, 1100), camFollow.y + FlxG.height * 1.5);
+				remove(dad);
+				remove(boyfriend);
+				add(dad);
+				add(boyfriend);
+				add(cloud);
+				var theScale = FlxG.random.float(0.8, 1);
+				cloud.scale.set(theScale, theScale);
+				FlxTween.tween(cloud, {y: camFollow.y - FlxG.height * 1.5}, FlxG.random.float(0.4, 0.5), {
+					onComplete: function (twn:FlxTween) {
+						remove(cloud);
+					}
+				});
+			}
+		}
 		#if windows
 		if (executeModchart && luaModchart != null)
 		{
@@ -3829,7 +3849,7 @@ class PlayState extends MusicBeatState
 		switch (SONG.song.toLowerCase()) {
 			case 'unchangeable':
 				switch (curBeat) {
-					case 202:
+					case 2://202
 						useRegularCamera = false;
 						camFollow.y = 510;
 						camFollow.x = 780;
