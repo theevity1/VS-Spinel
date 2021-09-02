@@ -20,6 +20,8 @@ import flixel.FlxBasic;
 import flixel.FlxCamera;
 import flixel.FlxG;
 
+using StringTools;
+
 class ModchartState 
 {
 	//public static var shaders:Array<LuaShader> = null;
@@ -345,7 +347,7 @@ class ModchartState
 				
 				//shaders = new Array<LuaShader>();
 
-				var result = LuaL.dofile(lua, Paths.lua(PlayState.SONG.song.toLowerCase() + "/modchart")); // execute le file
+				var result = LuaL.dofile(lua, Paths.lua(PlayState.SONG.song.toLowerCase().replace(' ','-') + "/modchart")); // execute le file
 	
 				if (result != 0)
 				{

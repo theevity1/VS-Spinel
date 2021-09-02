@@ -2540,7 +2540,7 @@ class PlayState extends MusicBeatState
 		}
  		if (FlxG.save.data.resetButton)
 		{
-			if(FlxG.keys.justPressed.R)
+			if(FlxG.keys.justPressed.R && !inCutscene)
 				{
 					boyfriend.stunned = true;
 

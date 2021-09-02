@@ -186,10 +186,11 @@ class VideoState extends MusicBeatState
 			}
 			GlobalVideo.get().update(elapsed);
 	
-			if (controls.RESET)
+			// This is broken apparently
+			/*if (controls.RESET)
 			{
 				GlobalVideo.get().restart();
-			}
+			}*/
 			/*if (FlxG.keys.justPressed.P)
 			{
 				txt.text = pauseText;
